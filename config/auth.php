@@ -36,6 +36,16 @@ return [
     */
 
     'guards' => [
+        'employee' => [
+            'driver' => 'session',
+            'provider' => 'employees',
+        ],
+
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -66,6 +76,16 @@ return [
     */
 
     'providers' => [
+        'employees' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Employee::class,
+        ],
+
+        'students' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Student::class,
+        ],
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
@@ -93,6 +113,20 @@ return [
     */
 
     'passwords' => [
+        'employees' => [
+            'provider' => 'employees',
+            'table' => 'employee_password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'students' => [
+            'provider' => 'students',
+            'table' => 'student_password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',

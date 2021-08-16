@@ -53,6 +53,14 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'employee.auth' => \App\Http\Middleware\RedirectIfNotEmployee::class,
+        'employee.guest' => \App\Http\Middleware\RedirectIfEmployee::class,
+        // 'employee.verified' => \App\Http\Middleware\EnsureEmployeeEmailIsVerified::class,
+        // 'employee.password.confirm' => \App\Http\Middleware\RequireEmployeePassword::class,
+        'student.auth' => \App\Http\Middleware\RedirectIfNotStudent::class,
+        'student.guest' => \App\Http\Middleware\RedirectIfStudent::class,
+        // 'student.verified' => \App\Http\Middleware\EnsureStudentEmailIsVerified::class,
+        // 'student.password.confirm' => \App\Http\Middleware\RequireStudentPassword::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
