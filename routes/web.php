@@ -14,7 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard.dashboard');
+});
+
+Route::get('/subject', function () {
+    return view('dashboard.Administration.index');
+});
+Route::get('/exams', function () {
+    return view('dashboard.Administration.exams');
+});
+Route::get('/questions', function () {
+    return view('dashboard.Administration.questions');
+});
+Route::get('/createQuestions', function () {
+    return view('dashboard.Administration.create_questions');
 });
 
 Auth::routes();
