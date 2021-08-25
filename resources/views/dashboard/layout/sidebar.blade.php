@@ -51,6 +51,22 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="/reviewExam" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Review
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/studentSubject" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Student
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

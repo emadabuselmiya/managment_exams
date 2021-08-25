@@ -10,7 +10,6 @@ Exams
 <!-- iCheck for checkboxes and radio inputs -->
 <link rel="stylesheet" href="dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 
-
 @endsection
 @section('page-header')
 <div class="col-sm-6">
@@ -103,19 +102,25 @@ Exams
                         <tbody>
                             <tr>
                                 <td>1</td>
-                                <td><a href="/questions">Web Midterm Exam</a></td>
+                                <td>Web Midterm Exam</td>
                                 <td><input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success"></td>
                                 <td><input type="checkbox" name="my-checkbox" checked data-bootstrap-switch data-off-color="danger" data-on-color="success"></td>
                                 <td>
                                     <div class="row">
-                                        <div class=" col-lg-6 col-sm-6" style="text-align:right;">
-                                            <a class="btn btn-info btn-sm" href="#">
+                                        <div class=" col-lg-3 col-sm-3">
+                                            <a class="btn btn-info btn-sm" href="/questions">
+                                                <i class="fas fa-eye"></i>
+                                                View
+                                            </a>
+                                        </div>
+                                        <div class=" col-lg-3 col-sm-3">
+                                            <a class="btn btn-secondary btn-sm" href="#">
                                                 <i class="fas fa-pencil-alt">
                                                 </i>
                                                 Edit
                                             </a>
                                         </div>
-                                        <div class=" col-lg-6 col-sm-6">
+                                        <div class=" col-lg-3 col-sm-3">
                                             <a class="btn btn-danger btn-sm" href="#">
                                                 <i class="fas fa-trash">
                                                 </i>

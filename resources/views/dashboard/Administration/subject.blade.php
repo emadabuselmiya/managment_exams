@@ -35,21 +35,28 @@
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>Subject Name</th>
-                                <th>Notes</th>
+                                <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td>1</td>
-                                <td><a href="/exams">Web Programming</a></td>
-                                <td></td>
+                                <td>Web Programming</td>
+                                <td>
+                                    <div class="row">
+                                            <a class="btn btn-info btn-sm" href="/exams">
+                                                <i class="fas fa-eye"></i>
+                                                View
+                                            </a>
+                                    </div>
+                                </td>
                             </tr>
                             </tbody>
                             <tfoot>
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>Subject Name</th>
-                                <th>Notes</th>
+                                <th>Actions</th>
                             </tr>
                             </tfoot>
                         </table>
