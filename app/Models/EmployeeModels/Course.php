@@ -24,6 +24,10 @@ class Course extends Model
 
     //    protected $with = ['availablecourse'];
 
+    public function exams()
+    {
+        return $this->hasMany(Course::class,);
+    }
     public function mark()
     {
         return $this->hasMany(Mark::class);
@@ -70,7 +74,7 @@ class Course extends Model
 
     public function getStudentsCount()
     {
-        $semester = Semester::where('active', 1)->first()->id;     
+        $semester = Semester::where('active', 1)->first()->id;
 
         $registeredCourses = $this->mark;
 

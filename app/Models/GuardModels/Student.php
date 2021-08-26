@@ -2,6 +2,8 @@
 
 namespace App\Models\GuardModels;
 
+use App\Models\ExamResult;
+use App\Models\StudentQuestionExam;
 use App\Notifications\Student\Auth\ResetPassword;
 use App\Notifications\Student\Auth\VerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -58,5 +60,14 @@ class Student extends Authenticatable
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifyEmail);
+    }
+
+    public function studentQuestionExam()
+    {
+        return $this->hasMany(StudentQuestionExam::class);
+    }
+    public function examResult()
+    {
+        return $this->hasMany(ExamResult::class);
     }
 }
