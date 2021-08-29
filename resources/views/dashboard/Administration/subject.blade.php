@@ -26,7 +26,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Subject</h3>
+                        <h3 class="card-title" style="float: right">Subject</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
