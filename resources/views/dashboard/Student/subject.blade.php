@@ -26,7 +26,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Subject Student</h3>
+                        <h3 class="card-title" style="float: right">Subject Student</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -44,7 +44,7 @@
                                 <td>Web Programming</td>
                                 <td>
                                     <div class="row">
-                                            <a class="btn btn-info btn-sm" href="/student_exam">
+                                            <a class="btn btn-info btn-sm" href="/student_exam" style="margin-right: 10px;">
                                                 <i class="fas fa-eye"></i>
                                                 View
                                             </a>

@@ -32,7 +32,7 @@ Exam Student
                 <div class="card-header">
                     <div class="row">
                         <div class=" col-lg-6 col-sm-6">
-                            <h3 class="card-title">Exam Student</h3>
+                            <h3 class="card-title" style="float: right">Exam Student</h3>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ Exam Student
                                 <td>30</td>
                                 <td>
                                     <div class="row">
-                                            <a class="btn btn-info btn-sm" href="/detailsExam">
+                                            <a class="btn btn-info btn-sm" href="/detailsExam" style="margin-right: 10px;">
                                                 <i class="fas fa-database"></i>
                                                 Details
                                             </a>

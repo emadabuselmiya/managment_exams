@@ -32,12 +32,12 @@ Questions
                 <div class="card-header">
                     <div class="row">
                         <div class=" col-lg-6 col-sm-6">
-                            <h3 class="card-title">Questions</h3>
+                            <h3 class="card-title" style="float: right">Questions</h3>
                         </div>
                         <div class=" col-lg-6 col-sm-6">
                             <!-- Button trigger modal -->
                             <a href="/createQuestions">
-                                <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="float: right" >
+                                <button  type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="float: left" >
                                 <i class="fas fa-plus"></i>&nbsp;Add Questions
                                 </button>
                             </a>

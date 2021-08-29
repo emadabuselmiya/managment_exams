@@ -47,9 +47,9 @@
                                     </div>
                                     <br>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="customRadio1"
+                                        <input class="custom-control-input" type="radio" id="customRadio2"
                                                name="customRadio">
-                                        <label for="customRadio1" class="custom-control-label">Emad</label>
+                                        <label for="customRadio2" class="custom-control-label">Emad</label>
                                     </div>
                                 </div>
                             </div>
@@ -57,15 +57,15 @@
                                 <!-- radio -->
                                 <div class="form-group">
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="customRadio1"
+                                        <input class="custom-control-input" type="radio" id="customRadio3"
                                                name="customRadio">
-                                        <label for="customRadio1" class="custom-control-label">Mohammed</label>
+                                        <label for="customRadio3" class="custom-control-label">Mohammed</label>
                                     </div>
                                     <br>
                                     <div class="custom-control custom-radio">
-                                        <input class="custom-control-input" type="radio" id="customRadio1"
+                                        <input class="custom-control-input" type="radio" id="customRadio4"
                                                name="customRadio">
-                                        <label for="customRadio1" class="custom-control-label">Ali</label>
+                                        <label for="customRadio4" class="custom-control-label">Ali</label>
                                     </div>
                                 </div>
                             </div>

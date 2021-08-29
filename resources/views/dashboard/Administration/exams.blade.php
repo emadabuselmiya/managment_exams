@@ -31,11 +31,11 @@ Exams
                 <div class="card-header">
                     <div class="row">
                         <div class=" col-lg-6 col-sm-6">
-                            <h3 class="card-title">Exams</h3>
+                            <h3 class="card-title" style="float: right;">Exams</h3>
                         </div>
                         <div class=" col-lg-6 col-sm-6">
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="float: right" >
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="float: left" >
                             <i class="fas fa-plus"></i>&nbsp;Add Exam
                             </button>
 

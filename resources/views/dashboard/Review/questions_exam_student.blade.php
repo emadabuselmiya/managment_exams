@@ -32,7 +32,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class=" col-lg-6 col-sm-6">
-                                <h3 class="card-title">Ahmad Joda</h3>
+                                <h3 class="card-title" style="float: right">Ahmad Joda</h3>
                             </div>
                         </div>
                     </div>

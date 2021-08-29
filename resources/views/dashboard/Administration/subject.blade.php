@@ -44,7 +44,7 @@
                                 <td>Web Programming</td>
                                 <td>
                                     <div class="row">
-                                            <a class="btn btn-info btn-sm" href="/exams">
+                                            <a class="btn btn-info btn-sm" href="/exams" style="margin-right: 10px;">
                                                 <i class="fas fa-eye"></i>
                                                 View
                                             </a>

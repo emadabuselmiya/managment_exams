@@ -32,7 +32,7 @@ Exams
                 <div class="card-header">
                     <div class="row">
                         <div class=" col-lg-6 col-sm-6">
-                            <h3 class="card-title">Exams</h3>
+                            <h3 class="card-title" style="float: right">Exams</h3>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@ Exams
                                 <td>Web Midterm Exam</td>
                                 <td>
                                     <div class="row">
-                                            <a class="btn btn-info btn-sm" href="/studentExam">
+                                            <a class="btn btn-info btn-sm" href="/studentExam" style="margin-right: 10px;">
                                                 <i class="fas fa-eye"></i>
                                                 View
                                             </a>
