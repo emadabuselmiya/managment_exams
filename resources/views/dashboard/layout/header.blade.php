@@ -17,12 +17,11 @@
 <link rel="stylesheet" href="dashboard/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
 <!-- Daterange picker -->
 <link rel="stylesheet" href="dashboard/plugins/daterangepicker/daterangepicker.css">
-
 <!-- Bootstrap 4 RTL -->
 <link rel="stylesheet" href="/dashboard/dist/rtl/css/bootstrap.css">
 <!-- Custom style for RTL -->
 <link rel="stylesheet" href="/dashboard/dist/rtl/css/custom.css">
-
 <!-- summernote -->
 <link rel="stylesheet" href="dashboard/plugins/summernote/summernote-bs4.min.css">
+
 @yield('css')
