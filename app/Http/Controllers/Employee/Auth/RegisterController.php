@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Employee\Auth;
 
-use App\Models\Employee;
+use App\Models\GuardModels\Employee;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -62,7 +62,7 @@ class RegisterController extends Controller
      *
      * @param array $data
      *
-     * @return \App\Models\Employee
+     * @return \App\Models\GuardModels\Employee
      */
     protected function create(array $data)
     {

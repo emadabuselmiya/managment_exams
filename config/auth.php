@@ -78,12 +78,12 @@ return [
     'providers' => [
         'employees' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Employee::class,
+            'model' => App\Models\GuardModels\Employee::class,
         ],
 
         'students' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Student::class,
+            'model' => App\Models\GuardModels\Student::class,
         ],
 
         'users' => [

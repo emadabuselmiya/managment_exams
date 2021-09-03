@@ -3,7 +3,7 @@
 namespace App\Models\EmployeeModels;
 
 
-use App\Models\Employee;
+use App\Models\GuardModels\Employee;
 use App\Models\EmployeeModels\Plan;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\EmployeeModels\Department;

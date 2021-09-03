@@ -38,6 +38,14 @@ class LoginController extends Controller
     {
         $this->middleware('employee.guest:employee', ['except' => 'logout']);
     }
+        
+    /**
+     * replace login by email to login by ID
+     */
+    public function username()
+    {
+        return 'name';
+    }
 
     /**
      * Get the guard to be used during authentication.
