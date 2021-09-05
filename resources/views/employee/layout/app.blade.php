@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    @include('dashboard.layout.header')
+    @include('employee.layout.header')
     <link rel="stylesheet" href="{{asset('dashboard/ahmadstyle.css')}}">
 
 </head>
@@ -19,11 +19,11 @@
     </div>
 
     <!-- Navbar -->
-@include('dashboard.layout.navbar')
+@include('employee.layout.navbar')
 <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-@include('dashboard.layout.sidebar')
+@include('employee.layout.sidebar')
 
 <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -42,7 +42,7 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Sweet Alert messages -->
-            @include('dashboard.layout.message')
+            @include('employee.layout.message')
 
             @yield('content')
 
@@ -51,4 +51,4 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-@include('dashboard.layout.footer')
+@include('employee.layout.footer')

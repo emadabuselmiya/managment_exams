@@ -44,7 +44,7 @@ class Student extends Authenticatable
     /**
      * Send the password reset notification.
      *
-     * @param  string  $token
+     * @param string $token
      * @return void
      */
     public function sendPasswordResetNotification($token)
@@ -66,6 +66,7 @@ class Student extends Authenticatable
     {
         return $this->hasMany(StudentQuestionExam::class);
     }
+
     public function examResult()
     {
         return $this->hasMany(ExamResult::class);

@@ -38,7 +38,7 @@ class LoginController extends Controller
     {
         $this->middleware('employee.guest:employee', ['except' => 'logout']);
     }
-        
+
     /**
      * replace login by email to login by ID
      */
@@ -70,7 +70,7 @@ class LoginController extends Controller
     /**
      * Log the employee out of the application.
      *
-     * @param \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function logout(Request $request)
@@ -82,4 +82,6 @@ class LoginController extends Controller
 
         return $this->loggedOut($request) ?: redirect()->route('employee.home');
     }
+
+
 }

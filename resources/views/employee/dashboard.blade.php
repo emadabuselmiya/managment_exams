@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    @include('dashboard.layout.header')
-    <link rel="stylesheet" href="{{asset('dashboard/ahmadstyle.css')}}">
 
-</head>
-
-
+@include('employee.layout.header')
 
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -19,11 +12,11 @@
     </div>
 
     <!-- Navbar -->
-@include('dashboard.layout.navbar')
+@include('employee.layout.navbar')
 <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-@include('dashboard.layout.sidebar')
+@include('employee.layout.sidebar')
 
 <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -32,7 +25,15 @@
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    @yield('page-header')
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard v1</li>
+                        </ol>
+                    </div><!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
@@ -42,13 +43,17 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Sweet Alert messages -->
-            @include('dashboard.layout.message')
+            @include('employee.layout.message')
 
-            @yield('content')
+            <!-- Small boxes (Stat box) -->
+
+                @include('employee.layout.small-boxes')
+
+                @yield('content')
 
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-@include('dashboard.layout.footer')
+@include('employee.layout.footer')
