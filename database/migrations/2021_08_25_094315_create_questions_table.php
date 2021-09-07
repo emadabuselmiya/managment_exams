@@ -19,7 +19,7 @@ class CreateQuestionsTable extends Migration
             $table->foreignIdFor(Exam::class)->nullable();
             $table->string('type')->nullable();
             $table->text('title')->nullable();
-            $table->tinyInteger('category')->nullable();
+            $table->string('category')->nullable();
             $table->text('optionA');
             $table->text('optionB');
             $table->text('optionC')->nullable();

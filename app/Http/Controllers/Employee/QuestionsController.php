@@ -43,27 +43,46 @@ class QuestionsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title' => 'required',
-            'type' => 'required',
-            'category' => 'required',
-            'optionA' => 'required',
-            'optionB' => 'required',
-            'right_answer' => 'required|in:optionA,optionB,optionC,optionD',
-        ]);
+
         $exam_id = $request->input('exam_id');
 
-        Question::create([
-            'title' => $request->title,
-            'type' => $request->type,
-            'category' => $request->category,
-            'optionA' => $request->optionA,
-            'optionB' => $request->optionB,
-            'optionC' => $request->optionC,
-            'optionD' => $request->optionD,
-            'right_answer' => $request->right_answer,
-            'exam_id' => $request->exam_id,
-        ]);
+        $option = getOption($request->type);
+        if (!empty($option)) {
+            $request->validate([
+                'title' => 'required',
+                'type' => 'required',
+                'category' => 'required',
+            ]);
+            Question::create([
+                'title' => $request->title,
+                'type' => $request->type,
+                'category' => $request->category,
+                'optionA' => $option[0],
+                'optionB' => $option[1],
+                'right_answer' => $request->right_answer,
+                'exam_id' => $request->exam_id,
+            ]);
+        } else {
+            $request->validate([
+                'title' => 'required',
+                'type' => 'required',
+                'category' => 'required',
+                'optionA' => 'required',
+                'optionB' => 'required',
+                'right_answer' => 'required|in:optionA,optionB,optionC,optionD',
+            ]);
+            Question::create([
+                'title' => $request->title,
+                'type' => $request->type,
+                'category' => $request->category,
+                'optionA' => $request->optionA,
+                'optionB' => $request->optionB,
+                'optionC' => $request->optionC,
+                'optionD' => $request->optionD,
+                'right_answer' => $request->right_answer,
+                'exam_id' => $request->exam_id,
+            ]);
+        }
 
         return redirect()->route('employee.questions.index', $exam_id);
     }
@@ -72,6 +91,7 @@ class QuestionsController extends Controller
     {
         $exam_id = $request->input('exam_id');
         $import = new QuestionsImport($exam_id);
+        //    dd(55);
         $import->import($request->file('import_file'), null, \Maatwebsite\Excel\Excel::XLSX);
         return redirect()->route('employee.questions.index', $exam_id);
     }
@@ -147,6 +167,7 @@ class QuestionsController extends Controller
     {
         $question = Question::findOrFail($id);
         $question->delete();
+        toastr()->error('Deleted');
         return back();
 
     }

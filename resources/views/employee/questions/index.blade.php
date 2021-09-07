@@ -135,8 +135,8 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td><span class="limit-text">{{strip_tags($question->title)}}</span></td>
-                                    <td>{{$question->type==1  ? 'True or False' : 'Multiple Chooses'}}</td>
-                                    <td>{{$question->category}}</td>
+                                    <td>{{getTypeString($question->type)}}</td>
+                                    <td>{{getCategoryString($question->category)}}</td>
                                     <td>{{$question->optionA}}</td>
                                     <td>{{$question->optionB}}</td>
                                     <td>{{$question->optionC}}</td>

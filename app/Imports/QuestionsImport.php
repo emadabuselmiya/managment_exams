@@ -33,10 +33,25 @@ class QuestionsImport implements ToModel, WithHeadingRow, SkipsOnError, WithVali
     public function model(array $row)
     {
         $answer = "option" . $row['answer'];
-        return new Question([
+        if ($row['category'] == 'صعب') {
+            $category = 3;
+        } else if ($row['category'] == 'متوسط') {
+            $category = 2;
+
+        } else if ($row['category'] == 'سهل') {
+            $category = 1;
+        }
+
+        if ($row['type'] == 'صح/خطأ') {
+            $type = 1;
+        } else if ($row['type'] == 'أختر') {
+            $type = 2;
+        }
+
+        $question = new Question([
             'title' => $row['title'],
-            'type' => $row['type'],
-            'category' => $row['category'],
+            'type' => $type,
+            'category' => $category,
             'optionA' => $row['a'],
             'optionB' => $row['b'],
             'optionC' => $row['c'],
@@ -44,6 +59,8 @@ class QuestionsImport implements ToModel, WithHeadingRow, SkipsOnError, WithVali
             'right_answer' => $answer,
             'exam_id' => $this->exam_id,
         ]);
+        return $question;
+
     }
 
     public function rules(): array

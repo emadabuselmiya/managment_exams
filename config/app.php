@@ -177,6 +177,8 @@ return [
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Bmatovu\MultiAuth\MultiAuthServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        Yoeunes\Toastr\ToastrServiceProvider::class
+
 
     ],
 

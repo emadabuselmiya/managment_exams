@@ -54,7 +54,6 @@ class ExamsController extends Controller
      */
     public function store(Request $request)
     {
-
         $request->validate([
             'type' => 'required',
             'number_of_questions' => 'required|numeric',
