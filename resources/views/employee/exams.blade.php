@@ -1,6 +1,6 @@
 @extends('employee.layout.app')
 @section('title')
-    Exams
+الأمتحانات
 @stop
 @section('css')
     <!-- DataTables -->
@@ -14,12 +14,12 @@
 @endsection
 @section('page-header')
     <div class="col-sm-6">
-        <h1 class="m-0">Exams</h1>
+        <h1 class="m-0">الأمتحانات</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
+            <li class="breadcrumb-item active">الأمتحانات</li>
         </ol>
     </div><!-- /.col -->
 @endsection
@@ -32,13 +32,13 @@
                     <div class="card-header">
                         <div class="row">
                             <div class=" col-lg-6 col-sm-6">
-                                <h3 class="card-title" style="float: right;">Exams</h3>
+                                <h3 class="card-title" style="float: right;">الأمتحانات</h3>
                             </div>
                             <div class=" col-lg-6 col-sm-6">
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#exampleModalCenter" style="float: left">
-                                    <i class="fas fa-plus"></i>&nbsp;Add Exam
+                                    <i class="fas fa-plus"></i>&nbsp;أضافة أمتحان
                                 </button>
 
                                 <!-- Modal -->
@@ -47,7 +47,7 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Add Exam</h5>
+                                                <h5 class="modal-title" id="exampleModalLongTitle">أضافة أمتحان</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -59,7 +59,7 @@
                                                 <div class="modal-body">
                                                     <div class="row">
                                                         <div class=" col-lg-6 col-sm-6">
-                                                            <label for="Name" class="mr-sm-2">Type Exam:</label>
+                                                            <label for="Name" class="mr-sm-2">نوع أمتحان:</label>
                                                             <select class="form-control form-control-lg"
                                                                     id="exampleFormControlSelect1" name="type">
                                                                 <option value="نهائي">نهائي</option>
@@ -70,8 +70,7 @@
                                                         </div>
 
                                                         <div class=" col-lg-6 col-sm-6">
-                                                            <label for="Name" class="mr-sm-2">Number of
-                                                                Questions:</label>
+                                                            <label for="Name" class="mr-sm-2">عدد الأسئلة:</label>
                                                             <input type="number" name="number_of_questions"
                                                                    class="form-control form-control-lg">
                                                         </div>
@@ -80,28 +79,28 @@
                                                 <div class="modal-body">
                                                     <div class="row">
                                                         <div class=" col-lg-6 col-sm-6">
-                                                            <label for="exampleFormControlTextarea1">Review:</label>
+                                                            <label for="exampleFormControlTextarea1">المراجعة:</label>
                                                             <select class="form-control form-control-lg"
                                                                     id="exampleFormControlSelect1" name="review">
-                                                                <option value="0">Not Active</option>
-                                                                <option value="1">Active</option>
+                                                                <option value="0">غير نشط</option>
+                                                                <option value="1">نشط</option>
                                                             </select>
                                                         </div>
                                                         <div class=" col-lg-6 col-sm-6">
-                                                            <label for="exampleFormControlTextarea1">Go back:</label>
+                                                            <label for="exampleFormControlTextarea1">الرجوع للخلف:</label>
                                                             <select class="form-control form-control-lg"
                                                                     id="exampleFormControlSelect1" name="back">
-                                                                <option value="0">Not Active</option>
-                                                                <option value="1">Active</option>
+                                                                <option value="0">غير نشط</option>
+                                                                <option value="1">نشط</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close
+                                                            data-dismiss="modal">الأغلاق
                                                     </button>
-                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    <button type="submit" class="btn btn-primary">حفظ</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -116,11 +115,10 @@
                             <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Exam Name</th>
-                                <th>Number Of Questions</th>
-                                <th>Questions in Exam</th>
-                                <th>Course</th>
-                                <th>Actions</th>
+                                <th>أسم الامتحان</th>
+                                <th>عدد الأسئلة</th>
+                                <th>المادة</th>
+                                <th>العمليات</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -128,7 +126,6 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$exam->type}}</td>
-                                    <td>{{$exam->questions_count}}</td>
                                     <td>{{$exam->number_of_questions}}</td>
                                     <td>{{$exam->course->name_ar}}</td>
                                     {{--                                    <td><input type="checkbox" name="my-checkbox" checked data-bootstrap-switch--}}
@@ -141,7 +138,7 @@
                                                 <a class="btn btn-info btn-sm"
                                                    href="{{route('employee.questions.index', $exam->id)}}">
                                                     <i class="fas fa-eye"></i>
-                                                    View
+                                                    عرض
                                                 </a>
                                             </div>
                                             <div class=" col-lg-3 col-sm-3">
@@ -149,7 +146,7 @@
                                                    data-target="#edit{{$exam->id}}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    Edit
+                                                    تعديل
                                                 </a>
                                             </div>
                                             <div class=" col-lg-3 col-sm-3">
@@ -161,7 +158,7 @@
                                                     <button type="submit" class="btn btn-danger btn-sm"
                                                             onclick="return  confirm('Do you want to Delete? Yes/No')">
                                                         <i class="fas fa-trash"></i>
-                                                        Delete
+                                                        حذف
                                                     </button>
                                                 </form>
 
@@ -172,8 +169,7 @@
                                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLongTitle">Add
-                                                                    Exam</h5>
+                                                                <h5 class="modal-title" id="exampleModalLongTitle">أضافة أمتحان</h5>
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                         aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
@@ -188,8 +184,7 @@
                                                                 <div class="modal-body">
                                                                     <div class="row">
                                                                         <div class=" col-lg-6 col-sm-6">
-                                                                            <label for="Name" class="mr-sm-2">Type
-                                                                                Exam:</label>
+                                                                            <label for="Name" class="mr-sm-2">نوع الامتحان:</label>
                                                                             <select class="form-control form-control-lg"
                                                                                     id="exampleFormControlSelect1"
                                                                                     name="type">
@@ -210,8 +205,7 @@
                                                                         </div>
 
                                                                         <div class=" col-lg-6 col-sm-6">
-                                                                            <label for="Name" class="mr-sm-2">Number of
-                                                                                Questions:</label>
+                                                                            <label for="Name" class="mr-sm-2">عدد الاسئلة:</label>
                                                                             <input type="number"
                                                                                    name="number_of_questions"
                                                                                    class="form-control form-control-lg"
@@ -222,33 +216,32 @@
                                                                 <div class="modal-body">
                                                                     <div class="row">
                                                                         <div class=" col-lg-6 col-sm-6">
-                                                                            <label for="exampleFormControlTextarea1">Review:</label>
+                                                                            <label for="exampleFormControlTextarea1">المراجعة:</label>
                                                                             <select class="form-control form-control-lg"
                                                                                     id="exampleFormControlSelect1"
                                                                                     name="review">
                                                                                 <option value="0"
                                                                                         @if(old('review',$exam->review)=='0') SELECTED @endif>
-                                                                                    Not Active
+                                                                                    غير نشط
                                                                                 </option>
                                                                                 <option value="1"
                                                                                         @if(old('review',$exam->review)=='1') SELECTED @endif>
-                                                                                    Active
+                                                                                    نشط
                                                                                 </option>
                                                                             </select>
                                                                         </div>
                                                                         <div class=" col-lg-6 col-sm-6">
-                                                                            <label for="exampleFormControlTextarea1">Go
-                                                                                back:</label>
+                                                                            <label for="exampleFormControlTextarea1">الرجوع للخلف:</label>
                                                                             <select class="form-control form-control-lg"
                                                                                     id="exampleFormControlSelect1"
                                                                                     name="back">
                                                                                 <option value="0"
                                                                                         @if(old('back',$exam->back)=='0') SELECTED @endif>
-                                                                                    Not Active
+                                                                                    غير نشط
                                                                                 </option>
                                                                                 <option value="1"
                                                                                         @if(old('back',$exam->back)=='1') SELECTED @endif>
-                                                                                    Active
+                                                                                    نشط
                                                                                 </option>
                                                                             </select>
                                                                         </div>
@@ -256,10 +249,9 @@
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
-                                                                            data-dismiss="modal">Close
+                                                                            data-dismiss="modal">إغلاق
                                                                     </button>
-                                                                    <button type="submit" class="btn btn-primary">Save Update
-                                                                        changes
+                                                                    <button type="submit" class="btn btn-primary">حفظ التعديل
                                                                     </button>
                                                                 </div>
                                                             </form>
@@ -276,11 +268,10 @@
                             <tfoot>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Exam Name</th>
-                                <th>Number Of Questions</th>
-                                <th>Questions in Exam</th>
-                                <th>Course</th>
-                                <th>Actions</th>
+                                <th>اسم الامتحان</th>
+                                <th>عدد الاسئلة</th>
+                                <th>المادة</th>
+                                <th>العمليات</th>
                             </tr>
                             </tfoot>
                         </table>

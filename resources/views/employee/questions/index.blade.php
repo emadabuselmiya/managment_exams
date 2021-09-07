@@ -15,12 +15,12 @@
 @endsection
 @section('page-header')
     <div class="col-sm-6">
-        <h1 class="m-0">Questions</h1>
+        <h1 class="m-0">الاسئلة</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Create</li>
+            <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
+            <li class="breadcrumb-item active">أضافة</li>
         </ol>
     </div><!-- /.col -->
 @endsection
@@ -33,21 +33,20 @@
                     <div class="card-header">
                         <div class="row">
                             <div class=" col-lg-6 col-sm-6">
-                                <h3 class="card-title" style="float: right">Questions</h3>
+                                <h3 class="card-title" style="float: right">الأسئلة</h3>
                             </div>
                             <div class=" col-lg-6 col-sm-6">
                                 <!-- Button trigger modal -->
                                 {{--                                <a href="{{route('employee.questions.create', $exam_id)}}">--}}
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#exampleModalCenter" style="float: left">
-                                    <i class="fas fa-plus"></i>&nbsp;Add Questions
+                                    <i class="fas fa-plus"></i>&nbsp;أضافة أسئلة
                                 </button>
 
                                 <a href="/file/ExportFormQuestions.xlsx">
                                     <button type="button" class="btn btn-info"
                                             style="float: left; margin-left: 10px">
-                                        <i class="fas fa-download"></i>&nbsp;Export Excel
-                                        File
+                                        <i class="fas fa-download"></i>&nbsp;تصدير ملف أكسل
                                     </button>
                                 </a>
 
@@ -56,7 +55,7 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">Add Questions</h5>
+                                                <h5 class="modal-title" id="exampleModalLongTitle">أضافة أسئلة</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -70,13 +69,13 @@
                                                     <div class="row">
                                                         <div class=" col-lg-12 col-sm-6">
                                                             <div class="form-group">
-                                                                <label for="exampleInputFile">File input</label>
+                                                                <label for="exampleInputFile">رفع ملف</label>
                                                                 <div class="input-group">
                                                                     <div class="custom-file">
                                                                         <input type="file" class="custom-file-input"
                                                                                name="import_file" id="customFile">
                                                                         <label class="custom-file-label"
-                                                                               for="exampleInputFile">Choose Excel File:
+                                                                               for="exampleInputFile">أختار ملف أكسل:
                                                                             .xlsx, .xls</label></div>
                                                                 </div>
                                                             </div>
@@ -92,7 +91,7 @@
                                                                 <button type="button" class="btn btn-primary"
                                                                         data-toggle="modal"
                                                                         style="float: right">
-                                                                    <i class="fas fa-plus"></i>&nbsp;Add One Question
+                                                                    <i class="fas fa-plus"></i>&nbsp;أضافة سؤال واحد
                                                                 </button>
                                                             </a>
                                                         </div>
@@ -101,9 +100,9 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">Close
+                                                            data-dismiss="modal">أغلاق
                                                     </button>
-                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    <button type="submit" class="btn btn-primary">حفظ</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -120,15 +119,15 @@
                             <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Title</th>
-                                <th>Type</th>
-                                <th>Category</th>
-                                <th style="width: 10px">A</th>
-                                <th style="width: 10px">B</th>
-                                <th style="width: 10px">C</th>
-                                <th style="width: 10px">D</th>
-                                <th style="width: 10px">Answer</th>
-                                <th>Actions</th>
+                                <th>عنوان السؤال</th>
+                                <th>نوع السؤال</th>
+                                <th>مستوى السؤال</th>
+                                <th style="width: 10px">أ</th>
+                                <th style="width: 10px">ب</th>
+                                <th style="width: 10px">ج</th>
+                                <th style="width: 10px">د</th>
+                                <th style="width: 10px">الاجابة الصحيحة</th>
+                                <th>العمليات</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -150,7 +149,7 @@
                                                    href="/employee/{{$exam_id}}/questions/{{$question->id}}/edit">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
-                                                    Edit
+                                                    تعديل
                                                 </a>
                                             </div>
                                             <div class=" col-lg-6 col-sm-6">
@@ -162,7 +161,7 @@
                                                     <button type="submit" class="btn btn-danger btn-sm"
                                                             onclick="return  confirm('Do you want to Delete? Yes/No')">
                                                         <i class="fas fa-trash"></i>
-                                                        Delete
+                                                        حذف
                                                     </button>
                                                 </form>
                                             </div>
@@ -174,15 +173,15 @@
                             <tfoot>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Title</th>
-                                <th>Type</th>
-                                <th>Category</th>
-                                <th style="width: 10px">A</th>
-                                <th style="width: 10px">B</th>
-                                <th style="width: 10px">C</th>
-                                <th style="width: 10px">D</th>
-                                <th style="width: 10px">Answer</th>
-                                <th>Actions</th>
+                                <th>عنوان السؤال</th>
+                                <th>نوع السؤال</th>
+                                <th>مستوى السؤال</th>
+                                <th style="width: 10px">أ</th>
+                                <th style="width: 10px">ب</th>
+                                <th style="width: 10px">ج</th>
+                                <th style="width: 10px">د</th>
+                                <th style="width: 10px">الأجابة الصحيحة</th>
+                                <th>العمليات</th>
                             </tr>
                             </tfoot>
                         </table>

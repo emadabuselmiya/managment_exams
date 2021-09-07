@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="{{route('home')}}" class="brand-link">
         <img src="{{asset('dashboard/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">لوحة التحكم</span>
     </a>
 
     <!-- Sidebar -->
@@ -21,7 +21,7 @@
         <!-- SidebarSearch Form -->
         <div class="form-inline">
             <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="البحث" aria-label="Search">
                 <div class="input-group-append">
                     <button class="btn btn-sidebar">
                         <i class="fas fa-search fa-fw"></i>
@@ -39,7 +39,7 @@
                     <a href="/employee" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Dashboard
+                            الصفحة الرئيسية
                         </p>
                     </a>
                 </li>
@@ -47,7 +47,7 @@
                     <a href="{{route('employee.subject')}}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Subject
+                            المواد
                         </p>
                     </a>
                 </li>
@@ -56,7 +56,7 @@
                     <a href="{{route('employee.exams.index', 0)}}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Exams
+                            الامتحانات
                         </p>
                     </a>
                 </li>
@@ -64,7 +64,7 @@
 {{--                    <a href="/reviewExam" class="nav-link">--}}
 {{--                        <i class="nav-icon fas fa-th"></i>--}}
 {{--                        <p>--}}
-{{--                            Review--}}
+{{--                            مراجعة--}}
 {{--                        </p>--}}
 {{--                    </a>--}}
 {{--                </li>--}}
@@ -72,7 +72,7 @@
 {{--                    <a href="/studentSubject" class="nav-link">--}}
 {{--                        <i class="nav-icon fas fa-th"></i>--}}
 {{--                        <p>--}}
-{{--                            Student--}}
+{{--                            طالب--}}
 {{--                        </p>--}}
 {{--                    </a>--}}
 {{--                </li>--}}

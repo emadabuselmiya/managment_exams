@@ -1,6 +1,6 @@
 @extends('employee.layout.app')
 @section('title')
-    Subject
+    المادة
 @stop
 @section('css')
     <!-- DataTables -->
@@ -11,12 +11,12 @@
 @endsection
 @section('page-header')
     <div class="col-sm-6">
-        <h1 class="m-0">Subject</h1>
+        <h1 class="m-0">المادة</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
+            <li class="breadcrumb-item"><a href="#">الصفحةالرئيسية</a></li>
+            <li class="breadcrumb-item active">المادة</li>
         </ol>
     </div><!-- /.col -->
 @endsection
@@ -27,7 +27,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title" style="float: right">Subject</h3>
+                        <h3 class="card-title" style="float: right">المادة</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -35,9 +35,9 @@
                             <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Course Code</th>
-                                <th>Subject Name</th>
-                                <th>Actions</th>
+                                <th>رقم المادة</th>
+                                <th>أسم المادة</th>
+                                <th>العمليات</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -52,7 +52,7 @@
                                                href="{{route('employee.exams.index', $item->availablecourse->course_id)}}"
                                                style="margin-right: 10px;">
                                                 <i class="fas fa-eye"></i>
-                                                View
+                                                عرض
                                             </a>
                                         </div>
                                     </td>
@@ -62,9 +62,9 @@
                             <tfoot>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Course Code</th>
-                                <th>Subject Name</th>
-                                <th>Actions</th>
+                                <th>رقم المادة</th>
+                                <th>أسم العمليات</th>
+                                <th>العمليات</th>
                             </tr>
                             </tfoot>
                         </table>
