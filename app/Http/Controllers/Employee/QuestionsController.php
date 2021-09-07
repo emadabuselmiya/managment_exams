@@ -83,6 +83,7 @@ class QuestionsController extends Controller
                 'exam_id' => $request->exam_id,
             ]);
         }
+        toastr()->success('تمت عملية الأضافة بنجاح');
 
         return redirect()->route('employee.questions.index', $exam_id);
     }
@@ -93,6 +94,7 @@ class QuestionsController extends Controller
         $import = new QuestionsImport($exam_id);
         //    dd(55);
         $import->import($request->file('import_file'), null, \Maatwebsite\Excel\Excel::XLSX);
+        toastr()->success('تمت أضافة ملف أكسل');
         return redirect()->route('employee.questions.index', $exam_id);
     }
 
@@ -153,7 +155,7 @@ class QuestionsController extends Controller
             'right_answer' => $request->right_answer,
             'exam_id' => $request->exam_id,
         ]);
-
+        toastr()->info('تمت عملية التعديل بنجاح');
         return redirect()->route('employee.questions.index', $exam_id);
     }
 
@@ -167,7 +169,7 @@ class QuestionsController extends Controller
     {
         $question = Question::findOrFail($id);
         $question->delete();
-        toastr()->error('Deleted');
+        toastr()->error('تمت عملية الحذف بنجاح');
         return back();
 
     }

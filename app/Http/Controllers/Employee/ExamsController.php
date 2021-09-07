@@ -66,7 +66,7 @@ class ExamsController extends Controller
             'review' => $request->input('review'),
             'course_id' => $request->input('course_id'),
         ]);
-
+        toastr()->success('تمت عملية الأضافة بنجاح');
         return back();
 
     }
@@ -119,6 +119,7 @@ class ExamsController extends Controller
 
         }catch (\Exception $e){
         }
+        toastr()->info('تمت عملية التعديل بنجاح');
 
         return back();
     }
@@ -133,6 +134,7 @@ class ExamsController extends Controller
     {
         $exam = Exam::findOrFail($id);
         $exam->delete();
+        toastr()->error('تمت عملية الحذف بنجاح');
         return back();
     }
 }

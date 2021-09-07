@@ -47,14 +47,10 @@
                                     <td>{{$item->availablecourse->course->course_code}}</td>
                                     <td>{{$item->availablecourse->course->name_ar}}</td>
                                     <td>
-                                        <div class="row">
-                                            <a class="btn btn-info btn-sm"
-                                               href="{{route('employee.exams.index', $item->availablecourse->course_id)}}"
-                                               style="margin-right: 10px;">
-                                                <i class="fas fa-eye"></i>
-                                                عرض
-                                            </a>
-                                        </div>
+                                        <a class="btn btn-info btn-sm"
+                                            href="{{route('employee.exams.index', $item->availablecourse->course_id)}}">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach
