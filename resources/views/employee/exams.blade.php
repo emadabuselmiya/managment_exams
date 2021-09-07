@@ -118,6 +118,8 @@
                                 <th>أسم الامتحان</th>
                                 <th>عدد الأسئلة</th>
                                 <th>المادة</th>
+                                <th>أمكانية الرجوع للخلف</th>
+                                <th>أمكانية المراجعة</th>
                                 <th>العمليات</th>
                             </tr>
                             </thead>
@@ -128,10 +130,10 @@
                                     <td>{{$exam->type}}</td>
                                     <td>{{$exam->number_of_questions}}</td>
                                     <td>{{$exam->course->name_ar}}</td>
-                                    {{--                                    <td><input type="checkbox" name="my-checkbox" checked data-bootstrap-switch--}}
-                                    {{--                                               data-off-color="danger" data-on-color="success"></td>--}}
-                                    {{--                                    <td><input type="checkbox" name="my-checkbox" checked data-bootstrap-switch--}}
-                                    {{--                                               data-off-color="danger" data-on-color="success"></td>--}}
+                                    <td><input type="checkbox" name="my-checkbox" checked data-bootstrap-switch
+                                    data-off-color="danger" data-on-color="success"></td>
+                                    <td><input type="checkbox" name="my-checkbox" checked data-bootstrap-switch
+                                    data-off-color="danger" data-on-color="success"></td>
                                     <td>
                                         <div class="row">
                                             <div class=" col-lg-3 col-sm-3">

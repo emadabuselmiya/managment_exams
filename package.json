@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
-        "ckeditor4": "^4.16.2"
+        "ckeditor4": "^4.16.2",
+        "filepond": "^4.29.0"
     }
 }

@@ -237,4 +237,5 @@ Create Questions
     $(window).on("load", function() {
         ff()
     });
-</script>@endsection
+</script>
+@endsection
