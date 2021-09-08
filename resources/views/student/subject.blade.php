@@ -1,4 +1,4 @@
-@extends('employee.layout.app')
+@extends('student.layout.app')
 @section('title')
     المادة
 @stop
@@ -37,20 +37,24 @@
                                 <th style="width: 10px">#</th>
                                 <th>رقم المادة</th>
                                 <th>أسم المادة</th>
-                                <th  style="width: 10px">العمليات</th>
+                                <th>العمليات</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($availablecourse as $item)
+                            @foreach($courses as $item)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$item->availablecourse->course->course_code}}</td>
-                                    <td>{{$item->availablecourse->course->name_ar}}</td>
-                                    <td id="centeritem">
-                                        <a class="btn btn-info btn-sm"
-                                           href="{{route('employee.exams.index', $item->availablecourse->course_id)}}">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
+                                    <td>{{$item->course->course_code}}</td>
+                                    <td>{{$item->course->name_ar}}</td>
+                                    <td>
+                                        <div class="row">
+                                            <a class="btn btn-info btn-sm"
+                                               href="{{route('student.exams.index', $item->course_id)}}"
+                                               style="margin-right: 10px;">
+                                                <i class="fas fa-eye"></i>
+                                                عرض
+                                            </a>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
@@ -60,7 +64,7 @@
                                 <th style="width: 10px">#</th>
                                 <th>رقم المادة</th>
                                 <th>أسم العمليات</th>
-                                <th  style="width: 10px">العمليات</th>
+                                <th>العمليات</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -89,17 +93,8 @@
         $(function () {
             $("#example1").DataTable({
                 "responsive": true, "lengthChange": false, "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
+
         });
     </script>
 @endsection

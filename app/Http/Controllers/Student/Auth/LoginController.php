@@ -49,6 +49,11 @@ class LoginController extends Controller
         return Auth::guard('student');
     }
 
+    public function username()
+    {
+        return 'student_id';
+    }
+
     /**
      * Show the application's login form.
      *
@@ -62,7 +67,7 @@ class LoginController extends Controller
     /**
      * Log the student out of the application.
      *
-     * @param \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function logout(Request $request)

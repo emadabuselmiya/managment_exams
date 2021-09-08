@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-@include('employee.layout.header')
+@include('student.layout.header')
 
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -13,11 +13,11 @@
     </div>
 
     <!-- Navbar -->
-@include('employee.layout.navbar')
+@include('student.layout.navbar')
 <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-@include('employee.layout.sidebar')
+@include('student.layout.sidebar')
 
 <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -44,11 +44,11 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Sweet Alert messages -->
-            @include('employee.layout.message')
+            @include('student.layout.message')
 
             <!-- Small boxes (Stat box) -->
 
-                @include('employee.layout.small-boxes')
+                @include('student.layout.small-boxes')
 
                 @yield('content')
 
@@ -57,4 +57,4 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-@include('employee.layout.footer')
+@include('student.layout.footer')

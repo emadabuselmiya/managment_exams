@@ -134,29 +134,48 @@ class QuestionsController extends Controller
     public function update(Request $request, $id)
     {
         $question = Question::findOrFail($id);
-        $request->validate([
-            'title' => 'required',
-            'type' => 'required',
-            'category' => 'required',
-            'optionA' => 'required',
-            'optionB' => 'required',
-            'right_answer' => 'required|in:optionA,optionB,optionC,optionD',
-        ]);
-        $exam_id = $request->input('exam_id');
+        $option = getOption($request->type);
+        if (!empty($option)) {
+            $request->validate([
+                'title' => 'required',
+                'type' => 'required',
+                'category' => 'required',
+            ]);
+            $question->update([
+                'title' => $request->title,
+                'type' => $request->type,
+                'category' => $request->category,
+                'optionA' => $option[0],
+                'optionB' => $option[1],
+                'optionC' => "",
+                'optionD' => "",
+                'right_answer' => $request->right_answer,
+                'exam_id' => $request->exam_id,
+            ]);
+        } else {
+            $request->validate([
+                'title' => 'required',
+                'type' => 'required',
+                'category' => 'required',
+                'optionA' => 'required',
+                'optionB' => 'required',
+                'right_answer' => 'required|in:optionA,optionB,optionC,optionD',
+            ]);
+            $question->update([
+                'title' => $request->title,
+                'type' => $request->type,
+                'category' => $request->category,
+                'optionA' => $request->optionA,
+                'optionB' => $request->optionB,
+                'optionC' => $request->optionC,
+                'optionD' => $request->optionD,
+                'right_answer' => $request->right_answer,
+                'exam_id' => $request->exam_id,
+            ]);
+        }
 
-        $question->update([
-            'title' => $request->title,
-            'type' => $request->type,
-            'category' => $request->category,
-            'optionA' => $request->optionA,
-            'optionB' => $request->optionB,
-            'optionC' => $request->optionC,
-            'optionD' => $request->optionD,
-            'right_answer' => $request->right_answer,
-            'exam_id' => $request->exam_id,
-        ]);
         toastr()->info('تمت عملية التعديل بنجاح');
-        return redirect()->route('employee.questions.index', $exam_id);
+        return redirect()->route('employee.questions.index', $request->exam_id);
     }
 
     /**

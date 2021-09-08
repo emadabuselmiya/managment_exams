@@ -33,6 +33,8 @@ class QuestionsImport implements ToModel, WithHeadingRow, SkipsOnError, WithVali
     public function model(array $row)
     {
         $answer = "option" . $row['answer'];
+        $category = 0;
+        $type = 0;
         if ($row['category'] == 'صعب') {
             $category = 3;
         } else if ($row['category'] == 'متوسط') {
@@ -47,18 +49,33 @@ class QuestionsImport implements ToModel, WithHeadingRow, SkipsOnError, WithVali
         } else if ($row['type'] == 'أختر') {
             $type = 2;
         }
+        $option = getOption($type);
 
-        $question = new Question([
-            'title' => $row['title'],
-            'type' => $type,
-            'category' => $category,
-            'optionA' => $row['a'],
-            'optionB' => $row['b'],
-            'optionC' => $row['c'],
-            'optionD' => $row['d'],
-            'right_answer' => $answer,
-            'exam_id' => $this->exam_id,
-        ]);
+        if (!empty($option)) {
+            $question = new Question([
+                'title' => $row['title'],
+                'type' => $type,
+                'category' => $category,
+                'optionA' => $option[0],
+                'optionB' => $option[1],
+                'optionC' => "",
+                'optionD' => "",
+                'right_answer' => $answer,
+                'exam_id' => $this->exam_id,
+            ]);
+        }else{
+            $question = new Question([
+                'title' => $row['title'],
+                'type' => $type,
+                'category' => $category,
+                'optionA' => $row['a'],
+                'optionB' => $row['b'],
+                'optionC' => $row['c'],
+                'optionD' => $row['d'],
+                'right_answer' => $answer,
+                'exam_id' => $this->exam_id,
+            ]);
+        }
         return $question;
 
     }

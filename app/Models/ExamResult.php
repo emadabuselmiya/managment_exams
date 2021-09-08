@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\GuardModels;
 
 class ExamResult extends Model
 {
@@ -13,7 +14,12 @@ class ExamResult extends Model
 
     public function exam()
     {
-        return $this->belongsTo(Exam::class);
+        return $this->belongsTo(Exam::class)->with('course');
+    }
+
+    public function student()
+    {
+        return $this->belongsTo(\App\Models\GuardModels\Student::class);
     }
 
     public function question()

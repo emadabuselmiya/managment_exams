@@ -25,14 +25,14 @@ class CreateExam
 
             if (empty($exam[0])) {
                 Exam::create([
-                    'type' => 'نصفي',
+                    'type' => 'mid',
                     'number_of_questions' => 0,
                     'back' => 0,
                     'review' => 0,
                     'course_id' => $item->course_id,
                 ]);
                 Exam::create([
-                    'type' => 'نهائي',
+                    'type' => 'final',
                     'number_of_questions' => 0,
                     'back' => 0,
                     'review' => 0,

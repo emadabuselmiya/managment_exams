@@ -18,45 +18,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//Route::get('/exams', function () {
-//    return view('dashboard.employee.exams');
-//});
-//Route::get('/questions', function () {
-//    return view('dashboard.employee.questions');
-//});
-//Route::get('/createQuestions', function () {
-//    return view('dashboard.employee.create_questions');
-//});
-//Route::get('/reviewExam', function () {
-//    return view('dashboard.Review.exams');
-//});
-Route::get('/studentExam', function () {
-   return view('dashboard.Review.student_exam');
-});
-Route::get('/questionsExamStudent', function () {
-   return view('dashboard.Review.questions_exam_student');
-});
-Route::get('/studentSubject', function () {
-   return view('dashboard.student.subject');
-});
-Route::get('/student_exam', function () {
-   return view('dashboard.student.exams');
-});
-Route::get('/detailsExam', function () {
-   return view('dashboard.student.details_exam');
-});
-Route::get('/startExam', function () {
-   return view('dashboard.student.start_exam');
-});
-Route::get('/examDelivery', function () {
-   return view('dashboard.student.exam_delivery');
-});
+
 
 Route::group([
     'prefix' => 'employee',
     'namespace' => 'Employee',
     'as' => 'employee.',
-   // 'middleware' => 'employee.auth:employee',
+    'middleware' => 'employee.auth:employee',
 ], function () {
 
     Route::get('/subject', 'HomeController@subject')->name('subject');
@@ -74,7 +42,26 @@ Route::group([
     Route::get('/{exam_id}/questions/{question_id}/edit', 'QuestionsController@edit')->name('questions.edit');
     Route::put('/questions/{id}', 'QuestionsController@update')->name('questions.update');
 
+});
 
+Route::group([
+    'prefix' => 'student',
+    'namespace' => 'Student',
+    'as' => 'student.',
+     'middleware' => 'student.auth:student',
+], function () {
+
+    Route::get('/subject', 'HomeController@subject')->name('subject');
+    Route::get('/{id}/exams', 'ExamsController@showAllExams')->name('exams.index');
+    Route::get('/exams/{id}', 'ExamsController@details')->name('exams.details');
+    Route::get('/exams/{exam_id}/start', 'ExamsController@start')->name('exams.start');
+    Route::get('/exams/question/{id}', 'ExamsController@question')->name('exams.question');
+    Route::get('/exams/question/{id}', 'ExamsController@question')->name('exams.question');
+    Route::post('/exams/question/{id}', 'ExamsController@saveAnswer')->name('exams.saveAnswer');
+
+    Route::post('/exams/question/{id}/back', 'ExamsController@backQuestion')->name('exams.backQuestion');
+
+    Route::get('/exams/question/{id}/check', 'ExamsController@check_right_answer')->name('exams.check');
 
 });
 

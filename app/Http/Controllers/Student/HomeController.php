@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\EmployeeModels\Availablecourse;
+use App\Models\EmployeeModels\Mark;
+use App\Models\Exam;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -21,7 +25,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index() {
-        return view('student.home');
+    public function index()
+    {
+        return view('student.dashboard');
     }
+
+    public function subject()
+    {
+        $student_id = Auth::guard('student')->user()->id;
+        $mark = Mark::where('student_id', $student_id)->get();
+        return view('student.subject', [
+            'courses' => $mark,
+        ]);
+    }
+
 }

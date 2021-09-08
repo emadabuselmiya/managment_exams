@@ -135,7 +135,7 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td><span class="limit-text">{{strip_tags($question->title)}}</span></td>
-                                    <td>{{getTypeString($question->type)}}</td>
+                                    <td>{{getTypeQuestionString($question->type)}}</td>
                                     <td>{{getCategoryString($question->category)}}</td>
                                     <td>{{$question->optionA}}</td>
                                     <td>{{$question->optionB}}</td>
@@ -152,36 +152,45 @@
                                                 </a>
                                             </div>
                                             <div class=" col-lg-6 col-sm-6">
-                                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete{{ $question->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                                        data-target="#delete{{ $question->id }}" title="حذف"><i
+                                                        class="fa fa-trash"></i></button>
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                                <div class="modal fade" id="delete{{ $question->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form action="{{ route('employee.questions.destroy', $question->id) }}" method="post">
-                                                {{ method_field('Delete') }}
-                                                @csrf
-                                                هل أنت متأكد من عملية الحذف؟
-                                                <input id="id" type="hidden" name="id" class="form-control" value="{{ $question->id }}">
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">إغلاق</button>
-                                                    <button type="submit" class="btn btn-danger">تأكيد</button>
-                                                </div>
-                                            </form>
+                                <div class="modal fade" id="delete{{ $question->id}}" tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
+                                                    id="exampleModalLabel">
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ route('employee.questions.destroy', $question->id) }}"
+                                                      method="post">
+                                                    {{ method_field('Delete') }}
+                                                    @csrf
+                                                    هل أنت متأكد من عملية الحذف؟
+                                                    <input id="id" type="hidden" name="id" class="form-control"
+                                                           value="{{ $question->id }}">
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">إغلاق
+                                                        </button>
+                                                        <button type="submit" class="btn btn-danger">تأكيد</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                             @endforeach
                             </tbody>
                             <tfoot>

@@ -64,6 +64,8 @@ class ExamsController extends Controller
             'number_of_questions' => $request->input('number_of_questions'),
             'back' => $request->input('back'),
             'review' => $request->input('review'),
+            'value' =>  $request->input('number_of_questions'),
+            'show_result' =>  1,
             'course_id' => $request->input('course_id'),
         ]);
         toastr()->success('تمت عملية الأضافة بنجاح');
@@ -114,6 +116,8 @@ class ExamsController extends Controller
                 'number_of_questions' => $request->input('number_of_questions'),
                 'back' => $request->input('back'),
                 'review' => $request->input('review'),
+                'value' =>  $request->input('number_of_questions'),
+                'show_result' =>  1,
                 'course_id' => $request->input('course_id'),
             ]);
 
