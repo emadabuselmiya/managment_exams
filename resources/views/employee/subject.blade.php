@@ -37,7 +37,7 @@
                                 <th style="width: 10px">#</th>
                                 <th>رقم المادة</th>
                                 <th>أسم المادة</th>
-                                <th>العمليات</th>
+                                <th  style="width: 10px">العمليات</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -46,7 +46,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->availablecourse->course->course_code}}</td>
                                     <td>{{$item->availablecourse->course->name_ar}}</td>
-                                    <td>
+                                    <td id="centeritem">
                                         <a class="btn btn-info btn-sm"
                                             href="{{route('employee.exams.index', $item->availablecourse->course_id)}}">
                                             <i class="fas fa-eye"></i>
@@ -60,7 +60,7 @@
                                 <th style="width: 10px">#</th>
                                 <th>رقم المادة</th>
                                 <th>أسم العمليات</th>
-                                <th>العمليات</th>
+                                <th  style="width: 10px">العمليات</th>
                             </tr>
                             </tfoot>
                         </table>
