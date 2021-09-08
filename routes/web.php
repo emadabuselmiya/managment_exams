@@ -30,27 +30,27 @@ Route::get('/', function () {
 //Route::get('/reviewExam', function () {
 //    return view('dashboard.Review.exams');
 //});
-//Route::get('/studentExam', function () {
-//    return view('dashboard.Review.student_exam');
-//});
-//Route::get('/questionsExamStudent', function () {
-//    return view('dashboard.Review.questions_exam_student');
-//});
-//Route::get('/studentSubject', function () {
-//    return view('dashboard.student.subject');
-//});
-//Route::get('/student_exam', function () {
-//    return view('dashboard.student.exams');
-//});
-//Route::get('/detailsExam', function () {
-//    return view('dashboard.student.details_exam');
-//});
-//Route::get('/startExam', function () {
-//    return view('dashboard.student.start_exam');
-//});
-//Route::get('/examDelivery', function () {
-//    return view('dashboard.student.exam_delivery');
-//});
+Route::get('/studentExam', function () {
+   return view('dashboard.Review.student_exam');
+});
+Route::get('/questionsExamStudent', function () {
+   return view('dashboard.Review.questions_exam_student');
+});
+Route::get('/studentSubject', function () {
+   return view('dashboard.student.subject');
+});
+Route::get('/student_exam', function () {
+   return view('dashboard.student.exams');
+});
+Route::get('/detailsExam', function () {
+   return view('dashboard.student.details_exam');
+});
+Route::get('/startExam', function () {
+   return view('dashboard.student.start_exam');
+});
+Route::get('/examDelivery', function () {
+   return view('dashboard.student.exam_delivery');
+});
 
 Route::group([
     'prefix' => 'employee',
