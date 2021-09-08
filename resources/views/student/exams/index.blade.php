@@ -54,13 +54,14 @@
                             @foreach($exams as $exam)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{"(".getTypeQuestionString($exam->type).") ".$exam->course->name_ar}}</td>
+                                    <td>{{"(".$exam->getTypeString().") ".$exam->course->name_ar}}</td>
                                     <td>{{$exam->course->availablecourse[0]->getDate($exam->type)}}</td>
                                     <td>{{$exam->course->availablecourse[0]->getStartTime($exam->type)}}</td>
                                     <td>{{calTime($exam)}}</td>
                                     <td>
                                         <div class="row" id="centeritem">
-                                            <a class="btn btn-info btn-sm" href="{{route('student.exams.details', $exam->id)}}">
+                                            <a class="btn btn-info btn-sm"
+                                               href="{{route('student.exams.details', $exam->id)}}">
                                                 <i class="fas fa-database"></i>
                                             </a>
                                         </div>
