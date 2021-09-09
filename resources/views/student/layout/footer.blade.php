@@ -44,6 +44,7 @@
 <script src="{{asset('dashboard/dist/js/pages/dashboard.js')}}"></script>
 @toastr_js
 @toastr_render
+
 @yield('js')
 </body>
 </html>

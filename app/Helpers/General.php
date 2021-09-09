@@ -84,13 +84,10 @@ function checkStartExam($exam)
     $endTimeC = Carbon\Carbon::parse($endTime)->format("h:i:s");
     $now = Carbon\Carbon::now();
 
-
-    if ($now->format('Y-m-d') == $dateC && $now->format('h:i:s') >= $startTimeC && $now->format('h:i:s') <= $endTimeC) {
+    if ($now->format('Y-m-d') == $dateC || $now->format('h:i:s') >= $startTimeC && $now->format('h:i:s') <= $endTimeC) {
         $result = $exam->examResult;
-        if (empty($result[0])) {
+        if (empty($result[0]) == true) {
             return true;
-        }else{
-            return 55;
         }
     }
     return false;

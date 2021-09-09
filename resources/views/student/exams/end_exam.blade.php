@@ -1,6 +1,6 @@
 @extends('student.layout.app')
 @section('title')
-    Exam Delivery
+    {{"(".$exam->getTypeString().") ".$exam->course->name_ar}}
 @stop
 @section('css')
     <!-- DataTables -->
@@ -15,18 +15,24 @@
             font-size: 40px;
             margin-top: 0px;
         }
+
+        * {
+            user-select: none;
+        }
+
+        *::selection {
+            background: none;
+        }
+
+        *::-moz-selection {
+            background: none;
+        }
     </style>
 
 @endsection
 @section('page-header')
     <div class="col-sm-6">
-        <h1 class="m-0">Exam Delivery</h1>
-    </div><!-- /.col -->
-    <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard v1</li>
-        </ol>
+        <h1 class="m-0">{{"(".$exam->getTypeString().") ".$exam->course->name_ar}}</h1>
     </div><!-- /.col -->
 @endsection
 @section('content')
@@ -37,7 +43,7 @@
                 <h3 class="card-title">الأسئلة</h3>
             </div>
             <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped">
 
                     <thead>
                     <tr>
@@ -62,7 +68,7 @@
                             </td>
                             @if($question->exam->back == 1)
                                 <td style="width:20px;">
-                                    <form action="{{route('student.exams.backQuestion', $exam_id)}}" method="POST">
+                                    <form action="{{route('student.exams.backQuestion', $exam->id)}}" method="POST">
                                         @csrf
                                         <input type="hidden" name="question_exam" value="{{$question->id}}">
                                         <button class="btn btn-info btn-sm" type="submit">
@@ -93,7 +99,7 @@
 
         <div class="row" style="margin-top: 24px;text-align: center;">
             <div class="col-12">
-                <a href="{{route('student.exams.check', $exam_id)}}">
+                <a href="{{route('student.exams.check', $exam->id)}}">
                     <button type="button" class="btn btn-success" style="width: 20%;">
                         &nbsp;سلم الجميع وانتهى
                     </button>
@@ -125,7 +131,7 @@
     <script>
         $(function () {
             $("#example1").DataTable({
-                "responsive": true,
+                "responsive": false,
                 "lengthChange": false,
                 "autoWidth": false,
                 "searching": false,
@@ -135,7 +141,7 @@
     </script>
     <script>
         // Set the date we're counting down to
-        var countDownDate = new Date("{{getEndTime($exam_id)}}").getTime();
+        var countDownDate = new Date("{{getEndTime($exam->id)}}").getTime();
         // Update the count down every 1 second
         var x = setInterval(function () {
             // Get today's date and time
@@ -153,8 +159,15 @@
             // If the count down is over, write some text
             if (distance < 0) {
                 clearInterval(x);
+                window.location.href = "{{route('student.exams.check', $exam->id)}}";
                 document.getElementById("demo").innerHTML = "EXPIRED";
             }
         }, 1000);
+    </script>
+
+    <script>
+        document.addEventListener("contextmenu", function(evt){
+            evt.preventDefault();
+        }, false);
     </script>
 @endsection

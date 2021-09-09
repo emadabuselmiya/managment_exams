@@ -112,6 +112,24 @@
                                                                 </option>
                                                             </select>
                                                         </div>
+
+                                                        <div class=" col-lg-6 col-sm-6">
+                                                            <br>
+
+                                                            <label for="exampleFormControlTextarea1">مشاهدة نتيجة الامتحان
+                                                                :</label>
+                                                            <select class="form-control form-control-lg"
+                                                                    id="exampleFormControlSelect1" name="show_result">
+                                                                <option value="0"
+                                                                        @if(old('show_result')=='0') SELECTED @endif>غير نشط
+                                                                </option>
+                                                                <option value="1"
+                                                                        @if(old('show_result')=='1') SELECTED @endif>نشط
+                                                                </option>
+                                                            </select>
+                                                        </div>
+
+
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -256,6 +274,22 @@
                                                                                 <option value="1"
                                                                                         @if(old('back',$exam->back)=='1') SELECTED @endif>
                                                                                     نشط
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <div class=" col-lg-6 col-sm-6">
+                                                                            <br>
+
+                                                                            <label for="exampleFormControlTextarea1">مشاهدة نتيجة الامتحان
+                                                                                :</label>
+                                                                            <select class="form-control form-control-lg"
+                                                                                    id="exampleFormControlSelect1" name="show_result">
+                                                                                <option value="0"
+                                                                                        @if(old('show_result', $exam->show_result)=='0') SELECTED @endif>غير نشط
+                                                                                </option>
+                                                                                <option value="1"
+                                                                                        @if(old('show_result', $exam->show_result)=='1') SELECTED @endif>نشط
                                                                                 </option>
                                                                             </select>
                                                                         </div>

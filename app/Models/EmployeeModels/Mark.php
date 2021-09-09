@@ -11,15 +11,17 @@ use App\Models\EmployeeModels\Semesterinstructor;
 
 class Mark extends Model
 {
-  
-  protected $fillable= [ 'semesterinstructor_id'];  
-  
-  public function student()
+
+//  protected $fillable= [ 'semesterinstructor_id'];
+
+    protected $guarded = [];
+
+    public function student()
     {
         return $this->belongsTo(Student::class);
     }
 
-	public function semesterinstructor()
+    public function semesterinstructor()
     {
         return $this->belongsTo(Semesterinstructor::class);
     }
@@ -29,7 +31,7 @@ class Mark extends Model
         return $this->belongsTo(Course::class);
     }
 
-	public function semester()
+    public function semester()
     {
         return $this->belongsTo(Semester::class);
     }
@@ -40,7 +42,8 @@ class Mark extends Model
     }
 
 
-    public function getStudentCount(){
+    public function getStudentCount()
+    {
         return $this->belongsTo(Course::class)->count();
 
     }

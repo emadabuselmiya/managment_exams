@@ -56,7 +56,6 @@ Route::group([
     Route::get('/exams/{id}', 'ExamsController@details')->name('exams.details');
     Route::get('/exams/{exam_id}/start', 'ExamsController@start')->name('exams.start');
     Route::get('/exams/question/{id}', 'ExamsController@question')->name('exams.question');
-    Route::get('/exams/question/{id}', 'ExamsController@question')->name('exams.question');
     Route::post('/exams/question/{id}', 'ExamsController@saveAnswer')->name('exams.saveAnswer');
 
     Route::post('/exams/question/{id}/back', 'ExamsController@backQuestion')->name('exams.backQuestion');

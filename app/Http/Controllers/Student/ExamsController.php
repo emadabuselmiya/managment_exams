@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\EmployeeModels\Mark;
 use App\Models\Exam;
 use App\Models\ExamResult;
 use App\Models\Question;
@@ -70,6 +71,7 @@ class ExamsController extends Controller
 
     public function question($exam_id)
     {
+
         $exam = Exam::find($exam_id);
         if (checkStartExam($exam) == true) {
             $student_id = Auth::guard('student')->user()->id;
@@ -85,18 +87,19 @@ class ExamsController extends Controller
                 if ($item->answer == null) {
                     return view('student.exams.question', [
                         'exam_question' => $item,
-                        'exam_id' => $exam_id,
+                        'exam' => $exam,
                     ]);
                 }
             }
 
             return view('student.exams.end_exam', [
                 'questions' => $questions,
-                'exam_id' => $exam_id,
+                'exam' => $exam,
             ]);
         } else {
             return redirect()->route('student.exams.details', $exam_id);
         }
+
 
     }
 
@@ -123,6 +126,7 @@ class ExamsController extends Controller
         } else {
             return back();
         }
+
     }
 
     public function check_right_answer($id)
@@ -151,6 +155,27 @@ class ExamsController extends Controller
             'exam_id' => $exam->id,
             'result_exam' => $value,
         ]);
+
+        $course_id = $exam->course->id;
+        $mark = Mark::when($student_id, function ($query, $student_id) {
+            $query->where('student_id', '=', $student_id);
+        })
+            ->when($course_id, function ($query, $course_id) {
+                $query->where('course_id', '=', $course_id);
+            })->first();
+
+
+        if ($exam->type == "mid") {
+            $mark->update([
+                'mid_mark' => $value,
+            ]);
+
+        } elseif ($exam->type == "final") {
+            $mark->update([
+                'final_mark' => $value,
+            ]);
+        }
+
         return redirect()->route('student.exams.details', $exam->id);
     }
 

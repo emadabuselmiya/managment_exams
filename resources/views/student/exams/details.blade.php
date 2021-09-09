@@ -51,10 +51,10 @@
                         <h3 class="card-title">Details Exam "تفاصيل الامتحان"</h3>
                     </div>
                     <div class="card-body">
-                        1.The body of the card <br>
-                        2.The body of the card <br>
-                        3.The body of the card <br>
-                        4.The body of the card <br>
+                        1. Name: {{"(".$exam->getTypeString().") ".$exam->course->name_ar}} <br>
+                        2. date: {{$exam->course->availablecourse[0]->getDate($exam->type)}} <br>
+                        3. Start Time: {{$exam->course->availablecourse[0]->getStartTime($exam->type)}} <br>
+                        4. End Time: {{$exam->course->availablecourse[0]->getEndTime($exam->type)}} <br>
                     </div>
                     <div class="card-footer">
                         Read it well
@@ -67,19 +67,51 @@
     <div class="container-fluid">
 
         <h1>{{Carbon\Carbon::now()}}</h1>
-{{--                {{dd(checkStartExam($exam))}}--}}
+        {{--                {{dd(checkStartExam($exam))}}--}}
         <div class="row" style="margin-top: 24px;text-align: center;">
             <div class="col-12">
-                <a href="{{route('student.exams.start', $exam->id)}}">
-                    <button type="button" class="btn btn-success" style="width: 15%;"
-                            @if(checkStartExam($exam) === false)
-                            disabled @endif>
-                        <i class="fas fa-play"></i>&nbsp;Exam started
-                    </button>
-                </a>
+                {{--                <a href="{{route('student.exams.start', $exam->id)}}" target="popup"--}}
+                {{--                   onclick="window.open('{{route('student.exams.start', $exam->id)}}','name','width=2000,height=1000')">--}}
+                <button type="button" class="btn btn-success" data-toggle="modal"
+                        data-target="#exampleModalCenter" style="width: 15%;"
+                        @if(checkStartExam($exam) === false)
+                        disabled @endif>
+                    <i class="fas fa-play"></i>&nbsp;Exam started
+                </button>
+                {{--                </a>--}}
             </div>
         </div>
         <br>
+
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">دخول الامتحان</h5>
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <h4>هل أنت متأكد من بيدأ الامتحان ؟</h4>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary"
+                                data-dismiss="modal">إغلاق
+                        </button>
+                        <button type="submit" class="btn btn-success"
+                                onclick="window.open('{{route('student.exams.start', $exam->id)}}','_blank','toolbar=yes, location=no, directories=no, status=no, menubar=yes, scrollbars=yes, resizable=no')">
+                            تأكيد
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
 
         <div class="card">
             <div class="card-header">

@@ -1,6 +1,6 @@
 @extends('student.layout.app')
 @section('title')
-    Questions
+    {{"(".$exam->getTypeString().") ".$exam->course->name_ar}}
 @stop
 @section('css')
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,17 +10,23 @@
             font-size: 40px;
             margin-top: 0px;
         }
+
+        * {
+            user-select: none;
+        }
+
+        *::selection {
+            background: none;
+        }
+
+        *::-moz-selection {
+            background: none;
+        }
     </style>
 @endsection
 @section('page-header')
     <div class="col-sm-6">
-        <h1 class="m-0">Questions</h1>
-    </div><!-- /.col -->
-    <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard v1</li>
-        </ol>
+        <h1 class="m-0">{{"(".$exam->getTypeString().") ".$exam->course->name_ar}}</h1>
     </div><!-- /.col -->
 @endsection
 @section('content')
@@ -141,7 +147,7 @@
 
     <script>
         // Set the date we're counting down to
-        var countDownDate = new Date("{{getEndTime($exam_id)}}").getTime();
+        var countDownDate = new Date("{{getEndTime($exam->id)}}").getTime();
         // Update the count down every 1 second
         var x = setInterval(function () {
             // Get today's date and time
@@ -160,9 +166,17 @@
             // If the count down is over, write some text
             if (distance < 0) {
                 clearInterval(x);
+                window.location.href = "{{route('student.exams.check', $exam->id)}}";
                 document.getElementById("demo").innerHTML = "EXPIRED";
             }
         }, 1000);
     </script>
+
+    <script>
+        document.addEventListener("contextmenu", function(evt){
+            evt.preventDefault();
+        }, false);
+    </script>
+
 
 @endsection

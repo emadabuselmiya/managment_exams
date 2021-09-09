@@ -9,21 +9,24 @@
 </head>
 
 
-
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
     <!-- Preloader -->
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="{{asset('dashboard/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
+        <img class="animation__shake" src="{{asset('dashboard/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo"
+             height="60" width="60">
     </div>
 
     <!-- Navbar -->
 @include('student.layout.navbar')
 <!-- /.navbar -->
 
+
     <!-- Main Sidebar Container -->
 @include('student.layout.sidebar')
+
+
 
 <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -42,9 +45,9 @@
         <section class="content">
             <div class="container-fluid">
                 <!-- Sweet Alert messages -->
-            @include('student.layout.message')
+                @include('student.layout.message')
 
-            @yield('content')
+                @yield('content')
 
             </div><!-- /.container-fluid -->
         </section>
