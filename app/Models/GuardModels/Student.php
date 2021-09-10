@@ -2,6 +2,7 @@
 
 namespace App\Models\GuardModels;
 
+use App\Models\EmployeeModels\Mark;
 use App\Models\ExamResult;
 use App\Models\StudentQuestionExam;
 use App\Notifications\Student\Auth\ResetPassword;
@@ -70,5 +71,11 @@ class Student extends Authenticatable
     public function examResult()
     {
         return $this->hasMany(ExamResult::class);
+    }
+
+    function getFullname()
+    {
+        $fullname = $this->first_name . " " . $this->second_name . " " . $this->fourth_name;
+        return $fullname;
     }
 }

@@ -39,34 +39,34 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
                     <!-- Authentication Links -->
-                    @if (Auth::guard('student')->guest())
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('student.login') }}">{{ __('Login') }}</a>
-                        </li>
-                        @if (Route::has('student.register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('student.register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::guard('student')->user()->name }} <span class="caret"></span>
-                            </a>
+{{--                    @if (Auth::guard('student')->guest())--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link" href="{{ route('student.login') }}">{{ __('Login') }}</a>--}}
+{{--                        </li>--}}
+{{--                        @if (Route::has('student.register'))--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="{{ route('student.register') }}">{{ __('Register') }}</a>--}}
+{{--                            </li>--}}
+{{--                        @endif--}}
+{{--                    @else--}}
+{{--                        <li class="nav-item dropdown">--}}
+{{--                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
+{{--                                {{ Auth::guard('student')->user()->name }} <span class="caret"></span>--}}
+{{--                            </a>--}}
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('student.logout') }}"
-                                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
+{{--                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
+{{--                                <a class="dropdown-item" href="{{ route('student.logout') }}"--}}
+{{--                                   onclick="event.preventDefault();--}}
+{{--                                                     document.getElementById('logout-form').submit();">--}}
+{{--                                    {{ __('Logout') }}--}}
+{{--                                </a>--}}
 
-                                <form id="logout-form" action="{{ route('student.logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
+{{--                                <form id="logout-form" action="{{ route('student.logout') }}" method="POST" style="display: none;">--}}
+{{--                                    @csrf--}}
+{{--                                </form>--}}
+{{--                            </div>--}}
+{{--                        </li>--}}
+{{--                    @endguest--}}
                 </ul>
             </div>
         </div>

@@ -72,7 +72,7 @@
 
                                 @else
                                     @foreach( randomOption($exam_question->question->optionA, $exam_question->question->optionB,$exam_question->question->optionC,$exam_question->question->optionD) as $key=>$option)
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-12">
                                             <!-- checkbox -->
                                             <div class="custom-control custom-radio">
                                                 <input class="custom-control-input" type="radio"

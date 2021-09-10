@@ -14,7 +14,7 @@
                 <img src="{{asset('dashboard/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ Auth::guard('employee')->user()->name ?? ''}}</a>
+                <a href="#" class="d-block">{{ Auth::guard('employee')->user()->getFullname() ?? ''}}</a>
             </div>
         </div>
 
@@ -24,7 +24,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a href="/employee" class="nav-link active">
+                    <a href="/employee" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             الصفحة الرئيسية
@@ -40,14 +40,14 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
-                    <a href="{{route('employee.exams.index', 0)}}" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            الامتحانات
-                        </p>
-                    </a>
-                </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a href="{{route('employee.exams.index', 0)}}" class="nav-link">--}}
+{{--                        <i class="nav-icon fas fa-th"></i>--}}
+{{--                        <p>--}}
+{{--                            الامتحانات--}}
+{{--                        </p>--}}
+{{--                    </a>--}}
+{{--                </li>--}}
 {{--                <li class="nav-item">--}}
 {{--                    <a href="/reviewExam" class="nav-link">--}}
 {{--                        <i class="nav-icon fas fa-th"></i>--}}

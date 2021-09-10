@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="student_id" class="col-md-4 col-form-label text-md-right">الرقم الجامعي</label>
+                            <label for="student_id" class="col-md-4 col-form-label text-md-right">Student ID</label>
 
                             <div class="col-md-6">
                                 <input id="student_id" type="text" class="form-control @error('student_id') is-invalid @enderror" name="student_id" value="{{ old('student_id') }}" required autocomplete="student_id" autofocus>
@@ -57,11 +57,11 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                @if (Route::has('student.password.request'))
-                                    <a class="btn btn-link" href="{{ route('student.password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
+{{--                                @if (Route::has('student.password.request'))--}}
+{{--                                    <a class="btn btn-link" href="{{ route('student.password.request') }}">--}}
+{{--                                        {{ __('Forgot Your Password?') }}--}}
+{{--                                    </a>--}}
+{{--                                @endif--}}
                             </div>
                         </div>
                     </form>

@@ -9,11 +9,13 @@
             <a href="#" class="nav-link">الصفحة الرئيسية</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link" onclick="document.getElementById('logout').submit()">تسجيل خروج</a>
+            <a href="{{ route('student.logout') }}" class="nav-link"
+               onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();">تسجيل خروج</a>
         </li>
-        <form action="{{ route('student.logout') }}" method="post" class="d-none" id="logout">
+
+        <form id="logout-form" action="{{ route('student.logout') }}" method="POST" class="d-none">
             @csrf
-            <button type="submit"></button>
         </form>
     </ul>
 </nav>

@@ -29,16 +29,6 @@ function getTypeQuestionString($type)
     return $type;
 }
 
-function getTypeExamString($type)
-{
-    if ($type == "mid") {
-        $type = "نصفي";
-    } else if ($type == "final") {
-        $type = "نهائي";
-    }
-
-    return $type;
-}
 
 function hiddenOption($type)
 {
@@ -56,21 +46,20 @@ function getOption($type)
     return [];
 }
 
-function getFullname($user)
-{
-    $fullname = $user->first_name . " " . $user->second_name . " " . $user->fourth_name;
-    return $fullname;
-}
-
 function calTime($exam)
 {
     $timeStart = $exam->course->availablecourse[0]->getStartTime($exam->type);
     $timeEnd = $exam->course->availablecourse[0]->getEndTime($exam->type);
+
+//    $dteStart = new DateTime($timeStart);
+//    $dteEnd   = new DateTime($timeEnd);
+//    $diff = $dteStart->diff($dteEnd);
+
     $t1 = Carbon\Carbon::parse($timeStart);
     $t2 = Carbon\Carbon::parse($timeEnd);
     $diff = $t1->diff($t2);
-//    dd($diff);
-    return $diff->h . ":" . $diff->m . ":" . $diff->s;
+
+    return $diff->format("%H:%I:%S");
 }
 
 function checkStartExam($exam)
@@ -134,6 +123,34 @@ function getEndTime($exam_id)
 
     $datetime = Carbon\Carbon::parse($endTime)->format("Y-m-d H:i:s");
     return $datetime;
+}
+
+function getMarkStudent($mark, $exam)
+{
+    if ($exam->type == "mid") {
+        $value = $mark->mid_mark ?? 0;
+        return $value . "/" . $exam->value;
+    } elseif ($exam->type == "final") {
+        $value = $mark->final_mark ?? 0;
+        return $value . "/" . $exam->value;
+    } else {
+        return null;
+    }
+}
+
+function getRightAnswer($question)
+{
+    $question = \App\Models\Question::findOrFail($question->id);
+
+    if ($question->right_answer == 'optionA') {
+        return $question->optionA;
+    } elseif ($question->right_answer == 'optionB') {
+        return $question->optionB;
+    } elseif ($question->right_answer == 'optionC') {
+        return $question->optionC;
+    } else {
+        return $question->optionD;
+    }
 }
 
 

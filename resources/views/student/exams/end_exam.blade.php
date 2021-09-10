@@ -100,7 +100,7 @@
         <div class="row" style="margin-top: 24px;text-align: center;">
             <div class="col-12">
                 <a href="{{route('student.exams.check', $exam->id)}}">
-                    <button type="button" class="btn btn-success" style="width: 20%;">
+                    <button type="button" class="btn btn-success" style="width: 20%;" >
                         &nbsp;سلم الجميع وانتهى
                     </button>
                 </a>

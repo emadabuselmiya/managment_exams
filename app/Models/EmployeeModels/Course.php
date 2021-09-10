@@ -30,7 +30,7 @@ class Course extends Model
     }
     public function mark()
     {
-        return $this->hasMany(Mark::class);
+        return $this->hasMany(Mark::class)->with('student');
     }
     public function externaltr()
     {

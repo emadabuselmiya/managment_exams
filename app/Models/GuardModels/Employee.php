@@ -61,4 +61,10 @@ class Employee extends Authenticatable
     {
         $this->notify(new VerifyEmail);
     }
+
+    function getFullname()
+    {
+        $fullname = $this->first_name . " " . $this->second_name . " " . $this->fourth_name;
+        return $fullname;
+    }
 }

@@ -51,10 +51,12 @@
                         <h3 class="card-title">Details Exam "تفاصيل الامتحان"</h3>
                     </div>
                     <div class="card-body">
-                        1. Name: {{"(".$exam->getTypeString().") ".$exam->course->name_ar}} <br>
-                        2. date: {{$exam->course->availablecourse[0]->getDate($exam->type)}} <br>
-                        3. Start Time: {{$exam->course->availablecourse[0]->getStartTime($exam->type)}} <br>
-                        4. End Time: {{$exam->course->availablecourse[0]->getEndTime($exam->type)}} <br>
+                        1. اسم الامتحان: {{"(".$exam->getTypeString().") ".$exam->course->name_ar}} <br>
+                        2. التاريخ: {{$exam->course->availablecourse[0]->getDate($exam->type)}} <br>
+                        3. وقت بدأ الامتحان: {{$exam->course->availablecourse[0]->getStartTime($exam->type)}} <br>
+                        4. وقت انتهاء الامتحان: {{$exam->course->availablecourse[0]->getEndTime($exam->type)}} <br>
+                        5. مدة الامتحان: {{calTime($exam)}} <br>
+
                     </div>
                     <div class="card-footer">
                         Read it well
@@ -107,7 +109,7 @@
                             تأكيد
                         </button>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -124,6 +126,7 @@
                         <th style="width: 10px">#</th>
                         <th>Name Subject</th>
                         <th>Value</th>
+                        <th>Review</th>
                         <th>Delivery time</th>
                         <th style="width: 40px">Status</th>
                     </tr>
@@ -134,6 +137,17 @@
                             <td>{{$result->id}}</td>
                             <td>{{"(".$result->exam->getTypeString().") ".$result->exam->course->name_ar}}</td>
                             <td>{{$result->exam->show_result == 1 ? ($result->result_exam."/".$result->exam->value) : ""}}</td>
+                            <td>
+                                @if($result->exam->review == 1)
+                                    <a href="{{route("student.exams.review",[$exam->id, Auth::guard('student')->user()->id])}}">
+                                        <button class="btn btn-info btn-sm"
+                                                style="margin-right: 10px;">
+                                            <i class="fas fa-eye"></i>
+                                            View
+                                        </button>
+                                    </a>
+                                @endif
+                            </td>
                             <td>{{$result->created_at->diffForHumans()}}</td>
                             <td><span class="badge bg-success">مُسلَّم</span></td>
                         </tr>

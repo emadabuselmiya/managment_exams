@@ -1,6 +1,6 @@
-@extends('student.layout.app')
+@extends('employee.layout.app')
 @section('title')
-    Exam Student
+    Student Exam
 @stop
 @section('css')
     <!-- DataTables -->
@@ -15,7 +15,7 @@
 @endsection
 @section('page-header')
     <div class="col-sm-6">
-        <h1 class="m-0">Exam Student</h1>
+        <h1 class="m-0">Student Exam</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
@@ -33,7 +33,8 @@
                     <div class="card-header">
                         <div class="row">
                             <div class=" col-lg-6 col-sm-6">
-                                <h3 class="card-title">Exam Student</h3>
+                                <h3 class="card-title"
+                                    style="float: right">{{"(".$exam->getTypeString().") ".$exam->course->name_ar}}</h3>
                             </div>
                         </div>
                     </div>
@@ -43,26 +44,29 @@
                             <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Exam Name</th>
-                                <th>Exam Date</th>
-                                <th>Start Exam Time</th>
-                                <th>Exam Duration</th>
+                                <th>Student ID</th>
+                                <th>Student Name</th>
+                                <th>Student's Mark</th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($exams as $exam)
+                            @foreach($exam->course->mark as $item)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{"(".$exam->getTypeString().") ".$exam->course->name_ar}}</td>
-                                    <td>{{$exam->course->availablecourse[0]->getDate($exam->type)}}</td>
-                                    <td>{{$exam->course->availablecourse[0]->getStartTime($exam->type)}}</td>
-                                    <td>{{calTime($exam)}}</td>
+                                    <td>{{$item->student->id}}</td>
+                                    <td>{{$item->student->getFullname()}}</td>
+
+                                    <td>{{getMarkStudent($item, $exam)}}</td>
                                     <td>
-                                        <div class="row" id="centeritem">
-                                            <a class="btn btn-info btn-sm"
-                                               href="{{route('student.exams.details', $exam->id)}}">
-                                                <i class="fas fa-database"></i>
+                                        <div class="row">
+
+                                            <a href="{{route("employee.exams.showStudentQuestions",[$exam->id, $item->student->id])}}">
+                                                <button class="btn btn-info btn-sm"
+                                                        style="margin-right: 10px;">
+                                                    <i class="fas fa-eye"></i>
+                                                    View
+                                                </button>
                                             </a>
                                         </div>
                                     </td>
@@ -72,10 +76,9 @@
                             <tfoot>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Exam Name</th>
-                                <th>Exam Date</th>
-                                <th>Start Exam Time</th>
-                                <th>Exam Duration</th>
+                                <th>Student ID</th>
+                                <th>Student Name</th>
+                                <th>Student's Mark</th>
                                 <th>Actions</th>
                             </tr>
                             </tfoot>
@@ -89,7 +92,13 @@
 @endsection
 @section('js')
     <!-- DataTables  & Plugins -->
-    <script src="{{asset('dashboard/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script>
+        import App from "../../../../public/js/app";
+
+        export default {
+            components: {App}
+        }
+    </script>
     <script src="{{asset('dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('dashboard/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('dashboard/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
@@ -109,6 +118,7 @@
             $("input[data-bootstrap-switch]").each(function () {
                 $(this).bootstrapSwitch('state', $(this).prop('checked'));
             })
+
         })
     </script>
     <script>
@@ -117,6 +127,7 @@
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
+                "buttons": [, "excel", "pdf", "print"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,
@@ -128,5 +139,16 @@
                 "responsive": true,
             });
         });
+    </script>
+    <script>
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget) // Button that triggered the modal
+            var recipient = button.data('whatever') // Extract info from data-* attributes
+            // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+            // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+            var modal = $(this)
+            modal.find('.modal-title').text('New message to ' + recipient)
+            modal.find('.modal-body input').val(recipient)
+        })
     </script>
 @endsection

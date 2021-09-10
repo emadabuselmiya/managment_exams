@@ -18,8 +18,8 @@
         <h1 class="m-0">الاسئلة</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
+        <ol class="breadcrumb float-sm-right float-lg-right">
+            <li class="breadcrumb-item">الصفحة الرئيسية</li>
             <li class="breadcrumb-item active">أضافة</li>
         </ol>
     </div><!-- /.col -->
