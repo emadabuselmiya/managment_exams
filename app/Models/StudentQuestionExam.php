@@ -13,7 +13,7 @@ class StudentQuestionExam extends Model
 
     public function exam()
     {
-        return $this->belongsTo(Exam::class);
+        return $this->belongsTo(Exam::class)->with('course');
     }
     public function student()
     {

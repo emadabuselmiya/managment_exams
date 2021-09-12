@@ -15,7 +15,7 @@ class Exam extends Model
 
     public function course()
     {
-        return $this->belongsTo(Course::class)->with('availablecourse');
+        return $this->belongsTo(Course::class)->with('availablecourse', 'mark');
     }
 
     public function questions()

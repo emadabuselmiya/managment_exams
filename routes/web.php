@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
-
 
 Route::group([
     'prefix' => 'employee',
@@ -32,6 +31,10 @@ Route::group([
     Route::post('/exams', 'ExamsController@store')->name('exams.store');
     Route::delete('/{id}/exams', 'ExamsController@destroy')->name('exams.destroy');
     Route::put('/exams/{id}', 'ExamsController@update')->name('exams.update');
+    Route::get('/exams/{exam_id}', 'ExamsController@showAllStudents')->name('exams.showAllStudents');
+    Route::get('/exams/{exam_id}/student/{student_id}', 'ExamsController@showStudentQuestions')->name('exams.showStudentQuestions');
+
+
 
 
     Route::get('/{id}/questions', 'QuestionsController@index')->name('questions.index');
@@ -61,6 +64,7 @@ Route::group([
     Route::post('/exams/question/{id}/back', 'ExamsController@backQuestion')->name('exams.backQuestion');
 
     Route::get('/exams/question/{id}/check', 'ExamsController@check_right_answer')->name('exams.check');
+    Route::get('/exams/{exam_id}/question/{student_id}', 'ExamsController@showStudentQuestions')->name('exams.review');
 
 });
 

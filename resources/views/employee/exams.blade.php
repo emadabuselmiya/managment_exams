@@ -163,7 +163,7 @@
                             @foreach($exams as $exam)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td>{{$exam->type}}</td>
+                                    <td>{{$exam->getTypeString()}}</td>
                                     <td>{{$exam->number_of_questions}}</td>
                                     <td>{{$exam->course->name_ar}}</td>
                                     <td><input type="checkbox" name="my-checkbox" checked data-bootstrap-switch
@@ -178,10 +178,18 @@
                                                     <i class="fas fa-eye"></i>
                                                 </a>
                                             </div>
+
                                             <div class=" col-lg-3 col-sm-3">
                                                 <a class="btn btn-secondary btn-sm" href="#" data-toggle="modal"
                                                    data-target="#edit{{$exam->id}}">
                                                     <i class="fas fa-pencil-alt">
+                                                    </i>
+                                                </a>
+                                            </div>
+
+                                            <div class=" col-lg-3 col-sm-3">
+                                                <a class="btn btn-success btn-sm" href="{{route('employee.exams.showAllStudents', $exam->id)}}">
+                                                    <i class="fas fa-list">
                                                     </i>
                                                 </a>
                                             </div>

@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
 use App\Models\EmployeeModels\Availablecourse;
+use App\Models\EmployeeModels\Mark;
 use App\Models\EmployeeModels\Semesterinstructor;
 use App\Models\Exam;
+use App\Models\GuardModels\Student;
+use App\Models\StudentQuestionExam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -37,16 +40,6 @@ class ExamsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
@@ -71,29 +64,6 @@ class ExamsController extends Controller
         toastr()->success('تمت عملية الأضافة بنجاح');
         return back();
 
-    }
-
-    /**
-     * Display the specified
-     * resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -140,5 +110,52 @@ class ExamsController extends Controller
         $exam->delete();
         toastr()->error('تمت عملية الحذف بنجاح');
         return back();
+    }
+
+    public function showAllStudents($exam_id)
+    {
+        $exam = Exam::with('course')->findOrFail($exam_id);
+
+        return view('employee.review.show-all-students', [
+            'exam' => $exam,
+        ]);
+    }
+
+    public function showStudentQuestions($exam_id, $student_id)
+    {
+        $exam = Exam::findOrFail($exam_id);
+        $course_name = "(" . $exam->getTypeString() . ") " . $exam->course->name_ar;
+
+        $student = Student::findOrFail($student_id);
+
+        $questions = StudentQuestionExam::with('question', 'student', 'exam')
+            ->when($exam_id, function ($query, $exam_id) {
+                $query->where('exam_id', '=', $exam_id);
+            })->when($student_id, function ($query, $student_id) {
+                $query->where('student_id', '=', $student_id);
+            })->get();
+
+        $mark = Mark::with('course', 'student')
+            ->when($exam->course->id, function ($query, $course_id) {
+                $query->where('course_id', '=', $course_id);
+            })->when($student_id, function ($query, $student_id) {
+                $query->where('student_id', '=', $student_id);
+            })->first();
+
+//        dd($mark);
+
+        if($exam->type == 'mid'){
+            $value = $mark->mid_mark . "/" . $exam->value;
+        }else {
+            $value = $mark->final_mark . "/" . $exam->value;
+        }
+
+//        dd($request->input('mark'));
+        return view('employee.review.questions', [
+            'exam_name' => $course_name,
+            'student_name' => $student->getFullname(),
+            'questions' => $questions,
+            'mark' => $value,
+        ]);
     }
 }

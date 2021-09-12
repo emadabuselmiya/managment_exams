@@ -10,6 +10,8 @@ use App\Models\Question;
 use App\Models\StudentQuestionExam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\GuardModels\Student;
+
 
 class ExamsController extends Controller
 {
@@ -71,7 +73,6 @@ class ExamsController extends Controller
 
     public function question($exam_id)
     {
-
         $exam = Exam::find($exam_id);
         if (checkStartExam($exam) == true) {
             $student_id = Auth::guard('student')->user()->id;
@@ -121,10 +122,10 @@ class ExamsController extends Controller
         if ($exam->back != 0) {
             return view('student.exams.question', [
                 'exam_question' => $question,
-                'exam_id' => $id,
+                'exam' => $exam,
             ]);
         } else {
-            return back();
+            return response(401);
         }
 
     }
@@ -178,5 +179,47 @@ class ExamsController extends Controller
 
         return redirect()->route('student.exams.details', $exam->id);
     }
+
+    public function showStudentQuestions($exam_id, $student_id)
+    {
+        $exam = Exam::findOrFail($exam_id);
+        if ($exam->review == 1) {
+            $course_name = "(" . $exam->getTypeString() . ") " . $exam->course->name_ar;
+
+            $student = Student::findOrFail($student_id);
+
+            $questions = StudentQuestionExam::with('question', 'student', 'exam')
+                ->when($exam_id, function ($query, $exam_id) {
+                    $query->where('exam_id', '=', $exam_id);
+                })->when($student_id, function ($query, $student_id) {
+                    $query->where('student_id', '=', $student_id);
+                })->get();
+
+            $mark = Mark::with('course', 'student')
+                ->when($exam->course->id, function ($query, $course_id) {
+                    $query->where('course_id', '=', $course_id);
+                })->when($student_id, function ($query, $student_id) {
+                    $query->where('student_id', '=', $student_id);
+                })->first();
+
+
+            if ($exam->type == 'mid') {
+                $value = $mark->mid_mark . "/" . $exam->value;
+            } else {
+                $value = $mark->final_mark . "/" . $exam->value;
+            }
+
+//        dd($request->input('mark'));
+            return view('employee.review.questions', [
+                'exam_name' => $course_name,
+                'student_name' => $student->getFullname(),
+                'questions' => $questions,
+                'mark' => $value,
+            ]);
+        } else {
+            return response(401);
+        }
+    }
+
 
 }
