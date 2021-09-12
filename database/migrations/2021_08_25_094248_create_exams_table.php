@@ -21,7 +21,7 @@ class CreateExamsTable extends Migration
             $table->boolean('back')->nullable();
             $table->string('type')->nullable();
             $table->boolean('review')->nullable();
-            $table->string('value')->default(0);
+            $table->string('weight')->default(0);
             $table->boolean('show_result')->nullable();
             $table->integer('q_p_p')->comment('number of questions in page')->nullable();
             $table->timestamps();

@@ -136,7 +136,7 @@
                         <tr>
                             <td>{{$result->id}}</td>
                             <td>{{"(".$result->exam->getTypeString().") ".$result->exam->course->name_ar}}</td>
-                            <td>{{$result->exam->show_result == 1 ? ($result->result_exam."/".$result->exam->value) : ""}}</td>
+                            <td>{{$result->exam->show_result == 1 ? ($result->result_exam."/".$result->exam->weight) : ""}}</td>
                             <td>
                                 @if($result->exam->review == 1)
                                     <a href="{{route("student.exams.review",[$exam->id, Auth::guard('student')->user()->id])}}">

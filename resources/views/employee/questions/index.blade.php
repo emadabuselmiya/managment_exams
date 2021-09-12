@@ -39,7 +39,6 @@
                             </div>
                             <div class=" col-lg-6 col-sm-6">
                                 <!-- Button trigger modal -->
-                                {{--                                <a href="{{route('employee.questions.create', $exam_id)}}">--}}
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#exampleModalCenter" style="float: left">
                                     <i class="fas fa-plus"></i>&nbsp;أضافة أسئلة
@@ -63,8 +62,7 @@
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
-                                            <form method="POST" action="{{route('employee.questions.import')}}"
-                                                  enctype="multipart/form-data">
+                                            <form method="POST" action="{{route('employee.questions.import')}}" enctype="multipart/form-data">
                                                 @csrf
                                                 <input type="hidden" name="exam_id" value="{{$exam_id}}">
                                                 <div class="modal-body">
@@ -122,7 +120,7 @@
                                     </div>
                                 </div>
 
-                                {{--                                </a>--}}
+
                             </div>
                         </div>
                     </div>

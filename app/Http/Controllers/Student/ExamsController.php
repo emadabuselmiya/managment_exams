@@ -143,18 +143,23 @@ class ExamsController extends Controller
                 $query->where('student_id', '=', $student_id);
             })->get();
 
-        $value = 0;
+        $student_mark = 0;
+        $exam_mark = $exam->weight;
+        $number_questions = $exam->number_of_questions;
 
         foreach ($questions as $item) {
             $question = Question::find($item->question_id);
             if ($item->answer == $question->right_answer) {
-                $value++;
+                $student_mark++;
             }
         }
+
+        $final_mark = ($exam_mark / $number_questions) * $student_mark;
+
         ExamResult::create([
             'student_id' => $student_id,
             'exam_id' => $exam->id,
-            'result_exam' => $value,
+            'result_exam' => $final_mark,
         ]);
 
         $course_id = $exam->course->id;
@@ -168,12 +173,12 @@ class ExamsController extends Controller
 
         if ($exam->type == "mid") {
             $mark->update([
-                'mid_mark' => $value,
+                'mid_mark' => $final_mark,
             ]);
 
         } elseif ($exam->type == "final") {
             $mark->update([
-                'final_mark' => $value,
+                'final_mark' => $final_mark,
             ]);
         }
 
@@ -204,9 +209,9 @@ class ExamsController extends Controller
 
 
             if ($exam->type == 'mid') {
-                $value = $mark->mid_mark . "/" . $exam->value;
+                $value = $mark->mid_mark . "/" . $exam->weight;
             } else {
-                $value = $mark->final_mark . "/" . $exam->value;
+                $value = $mark->final_mark . "/" . $exam->weight;
             }
 
 //        dd($request->input('mark'));

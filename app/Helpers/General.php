@@ -129,10 +129,10 @@ function getMarkStudent($mark, $exam)
 {
     if ($exam->type == "mid") {
         $value = $mark->mid_mark ?? 0;
-        return $value . "/" . $exam->value;
+        return $value . "/" . $exam->weight;
     } elseif ($exam->type == "final") {
         $value = $mark->final_mark ?? 0;
-        return $value . "/" . $exam->value;
+        return $value . "/" . $exam->weight;
     } else {
         return null;
     }

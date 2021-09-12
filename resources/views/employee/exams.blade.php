@@ -88,11 +88,43 @@
                                                 <div class="modal-body">
                                                     <div class="row">
                                                         <div class=" col-lg-6 col-sm-6">
-                                                            <label for="exampleFormControlTextarea1">المراجعة:</label>
+                                                            <label for="Name" class="mr-sm-2">العلامة:</label>
+                                                            <input type="number" name="weight"
+                                                                   class="form-control form-control-lg">
+                                                        </div>
+                                                        <div class=" col-lg-6 col-sm-6">
+
+                                                            <label for="exampleFormControlTextarea1">مشاهدة نتيجة
+                                                                الامتحان
+                                                                :</label>
+                                                            <select class="form-control form-control-lg"
+                                                                    id="exampleFormControlSelect1"
+                                                                    name="show_result">
+                                                                <option value="0"
+                                                                        @if(old('show_result')=='0') SELECTED @endif>
+                                                                    غير
+                                                                    نشط
+                                                                </option>
+                                                                <option value="1"
+                                                                        @if(old('show_result')=='1') SELECTED @endif>
+                                                                    نشط
+                                                                </option>
+                                                            </select>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class=" col-lg-6 col-sm-6">
+                                                            <label
+                                                                for="exampleFormControlTextarea1">المراجعة:</label>
                                                             <select class="form-control form-control-lg"
                                                                     id="exampleFormControlSelect1" name="review">
                                                                 <option value="0"
-                                                                        @if(old('review')=='0') SELECTED @endif>غير نشط
+                                                                        @if(old('review')=='0') SELECTED @endif>غير
+                                                                    نشط
                                                                 </option>
                                                                 <option value="1"
                                                                         @if(old('review')=='1') SELECTED @endif>نشط
@@ -105,30 +137,14 @@
                                                             <select class="form-control form-control-lg"
                                                                     id="exampleFormControlSelect1" name="back">
                                                                 <option value="0"
-                                                                        @if(old('back')=='0') SELECTED @endif>غير نشط
+                                                                        @if(old('back')=='0') SELECTED @endif>غير
+                                                                    نشط
                                                                 </option>
                                                                 <option value="1"
                                                                         @if(old('back')=='1') SELECTED @endif>نشط
                                                                 </option>
                                                             </select>
                                                         </div>
-
-                                                        <div class=" col-lg-6 col-sm-6">
-                                                            <br>
-
-                                                            <label for="exampleFormControlTextarea1">مشاهدة نتيجة الامتحان
-                                                                :</label>
-                                                            <select class="form-control form-control-lg"
-                                                                    id="exampleFormControlSelect1" name="show_result">
-                                                                <option value="0"
-                                                                        @if(old('show_result')=='0') SELECTED @endif>غير نشط
-                                                                </option>
-                                                                <option value="1"
-                                                                        @if(old('show_result')=='1') SELECTED @endif>نشط
-                                                                </option>
-                                                            </select>
-                                                        </div>
-
 
                                                     </div>
                                                 </div>
@@ -166,10 +182,20 @@
                                     <td>{{$exam->getTypeString()}}</td>
                                     <td>{{$exam->number_of_questions}}</td>
                                     <td>{{$exam->course->name_ar}}</td>
-                                    <td><input type="checkbox" name="my-checkbox" checked data-bootstrap-switch
-                                               data-off-color="danger" data-on-color="success"></td>
-                                    <td><input type="checkbox" name="my-checkbox" checked data-bootstrap-switch
-                                               data-off-color="danger" data-on-color="success"></td>
+                                    <td class="text-md-center">
+                                        @if($exam->back == 1)
+                                            <span class="badge  bg-success bb">فعال</span>
+                                        @else
+                                            <span class="badge bg-danger bb">معطل</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-md-center">
+                                        @if($exam->review == 1)
+                                            <span class="badge bg-success">فعال</span>
+                                        @else
+                                            <span class="badge bg-danger">معطل</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class="row">
                                             <div class=" col-lg-3 col-sm-3">
@@ -188,7 +214,8 @@
                                             </div>
 
                                             <div class=" col-lg-3 col-sm-3">
-                                                <a class="btn btn-success btn-sm" href="{{route('employee.exams.showAllStudents', $exam->id)}}">
+                                                <a class="btn btn-success btn-sm"
+                                                   href="{{route('employee.exams.showAllStudents', $exam->id)}}">
                                                     <i class="fas fa-list">
                                                     </i>
                                                 </a>
@@ -255,6 +282,36 @@
                                                                 <div class="modal-body">
                                                                     <div class="row">
                                                                         <div class=" col-lg-6 col-sm-6">
+                                                                            <label for="Name" class="mr-sm-2">العلامة:</label>
+                                                                            <input type="number" name="weight"
+                                                                                   class="form-control form-control-lg"  value="{{old('weight', $exam->weight)}}">
+                                                                        </div>
+                                                                        <div class=" col-lg-6 col-sm-6">
+
+                                                                            <label for="exampleFormControlTextarea1">مشاهدة نتيجة
+                                                                                الامتحان
+                                                                                :</label>
+                                                                            <select class="form-control form-control-lg"
+                                                                                    id="exampleFormControlSelect1"
+                                                                                    name="show_result">
+                                                                                <option value="0"
+                                                                                        @if(old('show_result', $exam->show_result)=='0') SELECTED @endif>
+                                                                                    غير
+                                                                                    نشط
+                                                                                </option>
+                                                                                <option value="1"
+                                                                                        @if(old('show_result', $exam->show_result)=='1') SELECTED @endif>
+                                                                                    نشط
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="modal-body">
+                                                                    <div class="row">
+                                                                        <div class=" col-lg-6 col-sm-6">
                                                                             <label for="exampleFormControlTextarea1">المراجعة:</label>
                                                                             <select class="form-control form-control-lg"
                                                                                     id="exampleFormControlSelect1"
@@ -286,21 +343,6 @@
                                                                             </select>
                                                                         </div>
 
-                                                                        <div class=" col-lg-6 col-sm-6">
-                                                                            <br>
-
-                                                                            <label for="exampleFormControlTextarea1">مشاهدة نتيجة الامتحان
-                                                                                :</label>
-                                                                            <select class="form-control form-control-lg"
-                                                                                    id="exampleFormControlSelect1" name="show_result">
-                                                                                <option value="0"
-                                                                                        @if(old('show_result', $exam->show_result)=='0') SELECTED @endif>غير نشط
-                                                                                </option>
-                                                                                <option value="1"
-                                                                                        @if(old('show_result', $exam->show_result)=='1') SELECTED @endif>نشط
-                                                                                </option>
-                                                                            </select>
-                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">

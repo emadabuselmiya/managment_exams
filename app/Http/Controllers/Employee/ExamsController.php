@@ -57,7 +57,7 @@ class ExamsController extends Controller
             'number_of_questions' => $request->input('number_of_questions'),
             'back' => $request->input('back'),
             'review' => $request->input('review'),
-            'value' => $request->input('number_of_questions'),
+            'weight' => $request->input('weight'),
             'show_result' => $request->input('show_result'),
             'course_id' => $request->input('course_id'),
         ]);
@@ -86,7 +86,7 @@ class ExamsController extends Controller
                 'number_of_questions' => $request->input('number_of_questions'),
                 'back' => $request->input('back'),
                 'review' => $request->input('review'),
-                'value' => $request->input('number_of_questions'),
+                'weight' => $request->input('weight'),
                 'show_result' => $request->input('show_result'),
                 'course_id' => $request->input('course_id'),
             ]);
@@ -145,9 +145,9 @@ class ExamsController extends Controller
 //        dd($mark);
 
         if($exam->type == 'mid'){
-            $value = $mark->mid_mark . "/" . $exam->value;
+            $value = $mark->mid_mark . "/" . $exam->weight;
         }else {
-            $value = $mark->final_mark . "/" . $exam->value;
+            $value = $mark->final_mark . "/" . $exam->weight;
         }
 
 //        dd($request->input('mark'));
