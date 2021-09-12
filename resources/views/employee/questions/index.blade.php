@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="{{asset('dashboard/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
     <!-- iCheck for checkboxes and radio inputs -->
     <link rel="stylesheet" href="{{asset('dashboard/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('dashboard/upload-file.css')}}">
+
 
 
 @endsection
@@ -70,14 +72,25 @@
                                                         <div class=" col-lg-12 col-sm-6">
                                                             <div class="form-group">
                                                                 <label for="exampleInputFile">رفع ملف</label>
-                                                                <div class="input-group">
-                                                                    <div class="custom-file">
-                                                                        <input type="file" class="custom-file-input"
-                                                                               name="import_file" id="customFile">
-                                                                        <label class="custom-file-label"
-                                                                               for="exampleInputFile">أختار ملف أكسل:
-                                                                            .xlsx, .xls</label></div>
-                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="input-group">
+                                                                        <input type="text" class="form-control" readonly>
+                                                                        <div class="input-group-btn">
+                                                                          <span class="fileUpload btn btn-info">
+                                                                              <span class="upl" id="upload">رفع ملف اكسل</span>
+                                                                              <input type="file" class="upload up" id="up" onchange="readURL(this);" />
+                                                                            </span><!-- btn-orange -->
+                                                                        </div><!-- btn -->
+                                                                    </div><!-- group -->
+                                                                </div><!-- form-group -->
+{{--                                                                <div class="input-group">--}}
+{{--                                                                    <div class="custom-file">--}}
+{{--                                                                        <input type="file" class="custom-file-input"--}}
+{{--                                                                               name="import_file" id="customFile">--}}
+{{--                                                                        <label class="custom-file-label"--}}
+{{--                                                                               for="exampleInputFile">أختار ملف أكسل:--}}
+{{--                                                                            .xlsx, .xls</label></div>--}}
+{{--                                                                </div>--}}
                                                             </div>
 
                                                         </div>
@@ -231,6 +244,8 @@
     <script src="{{asset('dashboard/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
     <!-- Bootstrap Switch -->
     <script src="{{asset('dashboard/plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
+    <script src="{{asset('dashboard/upload-file.js')}}"></script>
+
     <script>
         $(function () {
             $("input[data-bootstrap-switch]").each(function () {

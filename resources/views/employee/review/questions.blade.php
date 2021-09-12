@@ -42,129 +42,131 @@
                     </div>
                     <!-- /.card-header -->
                     @forelse($questions as $item)
-                        <div class="card-body">
-                            <h3>{{$loop->iteration.". ".strip_tags($item->question->title)}}</h3><br>
-                            <div class="row">
-                                <div class="form-group clearfix">
-                                    @if($item->question->type == 1)
-                                        <div class="col-sm-12">
-                                            <!-- checkbox -->
-                                            <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio"
-                                                       id="customRadio1"
-                                                       name="answer" value="optionA"
-                                                       @if($item->answer == 'optionA') checked @endif disabled>
-                                                <label for="customRadio1"
-                                                       class="custom-control-label">{{$item->question->optionA}}</label>
-                                                @if($item->question->right_answer == 'optionA' && $item->answer == 'optionA')
-                                                    <i class="fas fa-check"></i>
-                                                @elseif($item->question->right_answer != 'optionA' && $item->answer == 'optionA')
-                                                    <i class="fas fa-times"></i>
-                                                @endif
+                        <div class="form-group">
+                            <div class="card-body">
+                                <h3>{{$loop->iteration.". ".strip_tags($item->question->title)}}</h3><br>
+                                <div class="row">
+                                    <div class="form-group clearfix">
+                                        @if($item->question->type == 1)
+                                            <div class="col-sm-12">
+                                                <!-- checkbox -->
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input" type="radio"
+                                                           id="customRadio{{$item->id}}_1"
+                                                           name="answer" value="optionA"
+                                                           @if($item->answer == 'optionA') checked @endif disabled>
+                                                    <label for="customRadio{{$item->id}}_1"
+                                                           class="custom-control-label">{{$item->question->optionA}}</label>
+                                                    @if($item->question->right_answer == 'optionA' && $item->answer == 'optionA')
+                                                        <i class="fas fa-check"></i>
+                                                    @elseif($item->question->right_answer != 'optionA' && $item->answer == 'optionA')
+                                                        <i class="fas fa-times"></i>
+                                                    @endif
 
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <!-- checkbox -->
-                                            <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio"
-                                                       id="customRadio2"
-                                                       name="answer" value="optionB"
-                                                       @if($item->answer == 'optionB') checked @endif disabled>
-                                                <label for="customRadio2"
-                                                       class="custom-control-label">{{$item->question->optionB}}</label>
-                                                @if($item->question->right_answer == 'optionB' && $item->answer == 'optionB')
-                                                    <i class="fas fa-check"></i>
-                                                @elseif($item->question->right_answer != 'optionB' && $item->answer == 'optionB')
-                                                    <i class="fas fa-times"></i>
-                                                @endif
+                                            <div class="col-sm-12">
+                                                <!-- checkbox -->
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input" type="radio"
+                                                           id="customRadio{{$item->id}}_2"
+                                                           name="answer" value="optionB"
+                                                           @if($item->answer == 'optionB') checked @endif disabled>
+                                                    <label for="customRadio{{$item->id}}_2"
+                                                           class="custom-control-label">{{$item->question->optionB}}</label>
+                                                    @if($item->question->right_answer == 'optionB' && $item->answer == 'optionB')
+                                                        <i class="fas fa-check"></i>
+                                                    @elseif($item->question->right_answer != 'optionB' && $item->answer == 'optionB')
+                                                        <i class="fas fa-times"></i>
+                                                    @endif
 
+                                                </div>
                                             </div>
-                                        </div>
 
 
-                                    @else
-                                        <div class="col-sm-12">
-                                            <!-- checkbox -->
-                                            <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio"
-                                                       id="customRadio1"
-                                                       name="answer" value="optionA"
-                                                       @if($item->answer == "optionA") checked @endif disabled>
-                                                <label for="customRadio1"
-                                                       class="custom-control-label">{{$item->question->optionA}}</label>
-                                                @if($item->question->right_answer == 'optionA' && $item->answer == 'optionA')
-                                                    <i class="fas fa-check"></i>
-                                                @elseif($item->question->right_answer != 'optionA' && $item->answer == 'optionA')
-                                                    <i class="fas fa-times"></i>
-                                                @endif
+                                        @else
+                                            <div class="col-sm-12">
+                                                <!-- checkbox -->
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input" type="radio"
+                                                           id="customRadio{{$item->id}}_1"
+                                                           name="answer" value="optionA"
+                                                           @if($item->answer == "optionA") checked @endif disabled>
+                                                    <label for="customRadio{{$item->id}}_1"
+                                                           class="custom-control-label">{{$item->question->optionA}}</label>
+                                                    @if($item->question->right_answer == 'optionA' && $item->answer == 'optionA')
+                                                        <i class="fas fa-check"></i>
+                                                    @elseif($item->question->right_answer != 'optionA' && $item->answer == 'optionA')
+                                                        <i class="fas fa-times"></i>
+                                                    @endif
 
 
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <!-- checkbox -->
-                                            <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio"
-                                                       id="customRadio2"
-                                                       name="answer" value="optionB"
-                                                       @if($item->answer == "optionB") checked @endif disabled>
-                                                <label for="customRadio2"
-                                                       class="custom-control-label">{{$item->question->optionB}}</label>
-                                                @if($item->question->right_answer == 'optionB' && $item->answer == 'optionB')
-                                                    <i class="fas fa-check"></i>
-                                                @elseif($item->question->right_answer != 'optionB' && $item->answer == 'optionB')
-                                                    <i class="fas fa-times"></i>
-                                                @endif
+                                            <div class="col-sm-12">
+                                                <!-- checkbox -->
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input" type="radio"
+                                                           id="customRadio{{$item->id}}_2"
+                                                           name="answer" value="optionB"
+                                                           @if($item->answer == "optionB") checked @endif disabled>
+                                                    <label for="customRadio{{$item->id}}_2"
+                                                           class="custom-control-label">{{$item->question->optionB}}</label>
+                                                    @if($item->question->right_answer == 'optionB' && $item->answer == 'optionB')
+                                                        <i class="fas fa-check"></i>
+                                                    @elseif($item->question->right_answer != 'optionB' && $item->answer == 'optionB')
+                                                        <i class="fas fa-times"></i>
+                                                    @endif
 
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <!-- checkbox -->
-                                            <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio"
-                                                       id="customRadio3"
-                                                       name="answer" value="optionC"
-                                                       @if($item->answer == "optionC") checked @endif disabled>
-                                                <label for="customRadio3"
-                                                       class="custom-control-label">{{$item->question->optionC}}</label>
-                                                @if($item->question->right_answer == 'optionC' && $item->answer == 'optionC')
-                                                    <i class="fas fa-check"></i>
-                                                @elseif($item->question->right_answer != 'optionC' && $item->answer == 'optionC')
-                                                    <i class="fas fa-times"></i>
-                                                @endif
+                                            <div class="col-sm-12">
+                                                <!-- checkbox -->
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input" type="radio"
+                                                           id="customRadio{{$item->id}}_3"
+                                                           name="answer" value="optionC"
+                                                           @if($item->answer == "optionC") checked @endif disabled>
+                                                    <label for="customRadio{{$item->id}}_3"
+                                                           class="custom-control-label">{{$item->question->optionC}}</label>
+                                                    @if($item->question->right_answer == 'optionC' && $item->answer == 'optionC')
+                                                        <i class="fas fa-check"></i>
+                                                    @elseif($item->question->right_answer != 'optionC' && $item->answer == 'optionC')
+                                                        <i class="fas fa-times"></i>
+                                                    @endif
 
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <!-- checkbox -->
-                                            <div class="custom-control custom-radio">
-                                                <input class="custom-control-input" type="radio"
-                                                       id="customRadio4"
-                                                       name="answer" value="optionD"
-                                                       @if($item->answer == "optionD") checked @endif disabled>
-                                                <label for="customRadio4"
-                                                       class="custom-control-label">{{$item->question->optionD}}</label>
-                                                <i id="optionD" class="fas"></i>
+                                            <div class="col-sm-12">
+                                                <!-- checkbox -->
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input" type="radio"
+                                                           id="customRadio{{$item->id}}_4"
+                                                           name="answer" value="optionD"
+                                                           @if($item->answer == "optionD") checked @endif disabled>
+                                                    <label for="customRadio{{$item->id}}_4"
+                                                           class="custom-control-label">{{$item->question->optionD}}</label>
+                                                    <i id="optionD" class="fas"></i>
 
-                                                @if($item->question->right_answer == 'optionD' && $item->answer == 'optionD')
-                                                    <i class="fas fa-check"></i>
-                                                @elseif($item->question->right_answer != 'optionD' && $item->answer == 'optionD')
-                                                    <i class="fas fa-times"></i>
-                                                @endif
+                                                    @if($item->question->right_answer == 'optionD' && $item->answer == 'optionD')
+                                                        <i class="fas fa-check"></i>
+                                                    @elseif($item->question->right_answer != 'optionD' && $item->answer == 'optionD')
+                                                        <i class="fas fa-times"></i>
+                                                    @endif
+                                                </div>
                                             </div>
-                                        </div>
 
-                                    @endif
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
 
+                            </div>
+                            <div class=" btn-success" style="padding: 10px">
+                                <p>Right Answer : </p>
+                                {{getRightAnswer($item->question)}}
+                            </div>
+                            <hr>
                         </div>
-                        <div class=" btn-success" style="padding: 10px">
-                            <p>Right Answer : </p>
-                            {{getRightAnswer($item->question)}}
-                        </div>
-                        <hr>
                     @empty
                         <div class="card-body">
                             <p>لم يقدم الطالب الامتحان</p>
