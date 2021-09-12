@@ -29,9 +29,7 @@ div.dataTables_wrapper div.dataTables_filter{
     color: #6c757d;
     content: "/";
 }
-.main-header{
-    width:100%;
-}
+
 .navbar-nav{
     width:100%;
 }
@@ -48,6 +46,13 @@ div.dataTables_wrapper div.dataTables_filter{
 }
 #floatrightitem{
     float: right;
+}
+.offsett-md-5{
+    margin-left: 0px;
+}
+#buttonindex
+{
+    margin-right: 170px;
 }
 
 .custom-file-label::after {
