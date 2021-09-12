@@ -33,7 +33,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class=" col-lg-6 col-sm-6">
-                                <h3 class="card-title" style="float: right">الأسئلة</h3>
+                                <h3 class="card-title" id='floatrightitem'>الأسئلة</h3>
                             </div>
                             <div class=" col-lg-6 col-sm-6">
                                 <!-- Button trigger modal -->
@@ -90,7 +90,7 @@
                                                             <a href="{{route('employee.questions.create', $exam_id)}}">
                                                                 <button type="button" class="btn btn-primary"
                                                                         data-toggle="modal"
-                                                                        style="float: right">
+                                                                        id='floatrightitem'>
                                                                     <i class="fas fa-plus"></i>&nbsp;أضافة سؤال واحد
                                                                 </button>
                                                             </a>
@@ -118,16 +118,16 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th style="width: 10px">#</th>
+                                <th id="widthcol">#</th>
                                 <th>عنوان السؤال</th>
                                 <th>نوع السؤال</th>
                                 <th>مستوى السؤال</th>
-                                <th style="width: 10px">أ</th>
-                                <th style="width: 10px">ب</th>
-                                <th style="width: 10px">ج</th>
-                                <th style="width: 10px">د</th>
-                                <th style="width: 10px">الاجابة الصحيحة</th>
-                                <th>العمليات</th>
+                                <th id="widthcol">أ</th>
+                                <th id="widthcol">ب</th>
+                                <th id="widthcol">ج</th>
+                                <th id="widthcol">د</th>
+                                <th id="widthcol">الاجابة الصحيحة</th>
+                                <th class="sort-no-content">العمليات</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -195,15 +195,15 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th style="width: 10px">#</th>
+                                <th id="widthcol">#</th>
                                 <th>عنوان السؤال</th>
                                 <th>نوع السؤال</th>
                                 <th>مستوى السؤال</th>
-                                <th style="width: 10px">أ</th>
-                                <th style="width: 10px">ب</th>
-                                <th style="width: 10px">ج</th>
-                                <th style="width: 10px">د</th>
-                                <th style="width: 10px">الأجابة الصحيحة</th>
+                                <th id="widthcol">أ</th>
+                                <th id="widthcol">ب</th>
+                                <th id="widthcol">ج</th>
+                                <th id="widthcol">د</th>
+                                <th id="widthcol">الأجابة الصحيحة</th>
                                 <th>العمليات</th>
                             </tr>
                             </tfoot>

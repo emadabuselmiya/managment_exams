@@ -32,7 +32,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class=" col-lg-6 col-sm-6">
-                                <h3 class="card-title" style="float: right;">الأمتحانات</h3>
+                                <h3 class="card-title" id='floatrightitem'>الأمتحانات</h3>
                             </div>
                             <div class=" col-lg-6 col-sm-6">
                                 <!-- Button trigger modal -->
@@ -150,13 +150,13 @@
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th style="width: 10px">#</th>
+                                <th id="widthcol">#</th>
                                 <th>أسم الامتحان</th>
                                 <th>عدد الأسئلة</th>
                                 <th>المادة</th>
-                                <th>أمكانية الرجوع للخلف</th>
-                                <th>أمكانية المراجعة</th>
-                                <th>العمليات</th>
+                                <th class="sort-no-content">أمكانية الرجوع للخلف</th>
+                                <th class="sort-no-content">أمكانية المراجعة</th>
+                                <th class="sort-no-content">العمليات</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -351,7 +351,7 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th style="width: 10px">#</th>
+                                <th id="widthcol">#</th>
                                 <th>اسم الامتحان</th>
                                 <th>عدد الاسئلة</th>
                                 <th>المادة</th>
@@ -396,10 +396,8 @@
     <script>
         $(function () {
             $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": [""]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,

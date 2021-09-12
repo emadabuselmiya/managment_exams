@@ -27,17 +27,17 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title" style="float: right">المادة</h3>
+                        <h3 class="card-title" id='floatrightitem'>المادة</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th style="width: 10px">#</th>
+                                <th id="widthcol">#</th>
                                 <th>رقم المادة</th>
                                 <th>أسم المادة</th>
-                                <th  style="width: 10px">العمليات</th>
+                                <th  id="widthcol" class="sort-no-content">العمليات</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -57,10 +57,10 @@
                             </tbody>
                             <tfoot>
                             <tr>
-                                <th style="width: 10px">#</th>
+                                <th id="widthcol">#</th>
                                 <th>رقم المادة</th>
                                 <th>أسم العمليات</th>
-                                <th  style="width: 10px">العمليات</th>
+                                <th id="widthcol">العمليات</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -89,7 +89,7 @@
         $(function () {
             $("#example1").DataTable({
                 "responsive": true, "lengthChange": false, "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "buttons": [""]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,

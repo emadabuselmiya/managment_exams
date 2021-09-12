@@ -23,6 +23,11 @@
 <link rel="stylesheet" href="{{asset('dashboard/dist/rtl/css/custom.css')}}">
 <!-- summernote -->
 <link rel="stylesheet" href="{{asset('dashboard/plugins/summernote/summernote-bs4.min.css')}}">
+
 @toastr_css
 <script src="//cdn.ckeditor.com/4.16.2/full/ckeditor.js"></script>
 @yield('css')
+
+<link rel="stylesheet" href="{{asset('dashboard/ahmadstyle.css')}}">
+
+

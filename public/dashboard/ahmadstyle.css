@@ -1,4 +1,4 @@
-div.dataTables_wrapper div.dataTables_filter {
+div.dataTables_wrapper div.dataTables_filter{
     text-align: left;
 }
 
@@ -15,6 +15,37 @@ div.dataTables_wrapper div.dataTables_filter {
     justify-content: center;
     align-items: center;
 }
-
-
-
+.dataTable > thead > tr > th[class*="sort-no-content"]:before,
+.dataTable > thead > tr > th[class*="sort-no-content"]:after {
+    content: "" !important;
+}
+#widthcol
+{
+    width: 10px;
+}
+.breadcrumb-item+.breadcrumb-item::before {
+    float: right;
+    padding-right: .5rem;
+    color: #6c757d;
+    content: "/";
+}
+.main-header{
+    width:100%;
+}
+.navbar-nav{
+    width:100%;
+}
+.col-logout{
+    text-align: end;
+}
+.col-menu{
+    position: relative;
+    right: -21px;
+}
+.row-nav{
+    width:100%;
+    margin: 0px;
+}
+#floatrightitem{
+    float: right;
+}

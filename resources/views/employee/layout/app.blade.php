@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('employee.layout.header')
-    <link rel="stylesheet" href="{{asset('dashboard/ahmadstyle.css')}}">
 
 </head>
 
