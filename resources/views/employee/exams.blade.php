@@ -38,7 +38,7 @@
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#exampleModalCenter" style="float: left">
-                                    <i class="fas fa-plus"></i>&nbsp;أضافة أمتحان
+                                    <i class="fas fa-plus"></i>&nbsp;إضافة إمتحان جديد
                                 </button>
 
                                 <!-- Modal -->
@@ -47,7 +47,7 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">أضافة أمتحان</h5>
+                                                <h5 class="modal-title" id="exampleModalLongTitle">إضافة إمتحان جديد</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -81,16 +81,13 @@
                                                         <div class=" col-lg-6 col-sm-6">
                                                             <label for="Name" class="mr-sm-2">عدد الأسئلة:</label>
                                                             <input type="number" name="number_of_questions"
-                                                                   class="form-control form-control-lg">
+                                                                   class="form-control form-control-lg" required>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="row">
+
                                                         <div class=" col-lg-6 col-sm-6">
                                                             <label for="Name" class="mr-sm-2">العلامة:</label>
                                                             <input type="number" name="weight"
-                                                                   class="form-control form-control-lg">
+                                                                   class="form-control form-control-lg" required>
                                                         </div>
                                                         <div class=" col-lg-6 col-sm-6">
 
@@ -112,11 +109,6 @@
                                                             </select>
                                                         </div>
 
-                                                    </div>
-                                                </div>
-
-                                                <div class="modal-body">
-                                                    <div class="row">
                                                         <div class=" col-lg-6 col-sm-6">
                                                             <label
                                                                 for="exampleFormControlTextarea1">المراجعة:</label>
@@ -146,8 +138,26 @@
                                                             </select>
                                                         </div>
 
+                                                        <div class=" col-lg-6 col-sm-6">
+                                                            <label
+                                                                for="exampleFormControlTextarea1">التاريخ:</label>
+                                                            <input class="form-control form-control-lg" type="date" name="date" required>
+
+                                                        </div>
+                                                        <div class=" col-lg-6 col-sm-6">
+                                                            <label for="exampleFormControlTextarea1">
+                                                                وقت البدء:</label>
+                                                            <input class="form-control form-control-lg" type="time" name="start_time" required>
+                                                        </div>
+                                                        <div class=" col-lg-6 col-sm-6">
+                                                            <label for="exampleFormControlTextarea1">
+                                                                وقت الانتهاء:</label>
+                                                            <input class="form-control form-control-lg" type="time" name="end_time" required>
+                                                        </div>
+
                                                     </div>
                                                 </div>
+
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                             data-dismiss="modal">الأغلاق
@@ -277,18 +287,18 @@
                                                                                    class="form-control form-control-lg"
                                                                                    value="{{old('number_of_questions', $exam->number_of_questions)}}">
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <div class="row">
+
                                                                         <div class=" col-lg-6 col-sm-6">
-                                                                            <label for="Name" class="mr-sm-2">العلامة:</label>
+                                                                            <label for="Name"
+                                                                                   class="mr-sm-2">العلامة:</label>
                                                                             <input type="number" name="weight"
-                                                                                   class="form-control form-control-lg"  value="{{old('weight', $exam->weight)}}">
+                                                                                   class="form-control form-control-lg"
+                                                                                   value="{{old('weight', $exam->weight)}}">
                                                                         </div>
                                                                         <div class=" col-lg-6 col-sm-6">
 
-                                                                            <label for="exampleFormControlTextarea1">مشاهدة نتيجة
+                                                                            <label for="exampleFormControlTextarea1">مشاهدة
+                                                                                نتيجة
                                                                                 الامتحان
                                                                                 :</label>
                                                                             <select class="form-control form-control-lg"
@@ -306,11 +316,6 @@
                                                                             </select>
                                                                         </div>
 
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="modal-body">
-                                                                    <div class="row">
                                                                         <div class=" col-lg-6 col-sm-6">
                                                                             <label for="exampleFormControlTextarea1">المراجعة:</label>
                                                                             <select class="form-control form-control-lg"
@@ -341,6 +346,22 @@
                                                                                     نشط
                                                                                 </option>
                                                                             </select>
+                                                                        </div>
+                                                                        <div class=" col-lg-6 col-sm-6">
+                                                                            <label
+                                                                                for="exampleFormControlTextarea1">التاريخ:</label>
+                                                                            <input class="form-control form-control-lg" type="date" name="date" value="{{old('date', $exam->date->format('Y-m-d'))}}">
+
+                                                                        </div>
+                                                                        <div class=" col-lg-6 col-sm-6">
+                                                                            <label for="exampleFormControlTextarea1">
+                                                                                وقت البدء:</label>
+                                                                            <input class="form-control form-control-lg" type="time" name="start_time" value="{{old('start_time', $exam->start_time)->format('H:i')}}">
+                                                                        </div>
+                                                                        <div class=" col-lg-6 col-sm-6">
+                                                                            <label for="exampleFormControlTextarea1">
+                                                                                وقت الانتهاء:</label>
+                                                                            <input class="form-control form-control-lg" type="time" name="end_time" value="{{old('end_time', $exam->end_time->format('H:i'))}}">
                                                                         </div>
 
                                                                     </div>
@@ -383,7 +404,8 @@
                                                       method="post">
                                                     {{ method_field('Delete') }}
                                                     @csrf
-                                                    هل أنت متأكد من عملية الحذف؟
+                                                    <p>هل أنت متأكد من عملية الحذف؟</p>
+
                                                     <input id="id" type="hidden" name="id" class="form-control"
                                                            value="{{ $exam->id }}">
                                                     <div class="modal-footer">

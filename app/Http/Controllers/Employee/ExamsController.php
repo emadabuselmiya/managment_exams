@@ -60,7 +60,11 @@ class ExamsController extends Controller
             'weight' => $request->input('weight'),
             'show_result' => $request->input('show_result'),
             'course_id' => $request->input('course_id'),
+            'date' => $request->input('date'),
+            'start_time' => $request->input('start_time'),
+            'end_time' => $request->input('end_time'),
         ]);
+
         toastr()->success('تمت عملية الأضافة بنجاح');
         return back();
 
@@ -89,6 +93,9 @@ class ExamsController extends Controller
                 'weight' => $request->input('weight'),
                 'show_result' => $request->input('show_result'),
                 'course_id' => $request->input('course_id'),
+                'date' => $request->input('date'),
+                'start_time' => $request->input('start_time'),
+                'end_time' => $request->input('end_time'),
             ]);
 
         } catch (\Exception $e) {

@@ -10,7 +10,7 @@
 
                     <div class="card-body">
                         <div class="form-group row"  id="buttonindex">
-                            <div class="col-md-6 offset-md-5">
+                            <div class="col-md-6 offset-md-3">
                                 <a href="{{route('student.login')}}" class="btn btn-primary btn-lg" style="width: 100%">
                                     Student
                                 </a>
@@ -18,7 +18,7 @@
                             <br>
                             <br>
                             <br>
-                            <div class="col-md-6 offset-md-5">
+                            <div class="col-md-6 offset-md-3">
                                 <a href="{{route('employee.login')}}" class="btn btn-primary btn-lg" style="width: 100%">
                                     Employee
                                 </a>

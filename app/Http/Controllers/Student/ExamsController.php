@@ -182,7 +182,7 @@ class ExamsController extends Controller
             ]);
         }
 
-        return redirect()->route('student.exams.details', $exam->id);
+        return view('student.exams.done');
     }
 
     public function showStudentQuestions($exam_id, $student_id)

@@ -64,16 +64,13 @@ function calTime($exam)
 
 function checkStartExam($exam)
 {
-    $startTime = $exam->course->availablecourse[0]->getStartTime($exam->type);
-    $endTime = $exam->course->availablecourse[0]->getEndTime($exam->type);
-    $date = $exam->course->availablecourse[0]->getDate($exam->type);
-
-    $dateC = Carbon\Carbon::parse($date)->format("Y-m-d");
-    $startTimeC = Carbon\Carbon::parse($startTime)->format("h:i:s");
-    $endTimeC = Carbon\Carbon::parse($endTime)->format("h:i:s");
+    $startTime = $exam->start_time->format("h:i:s");
+    $endTime = $exam->end_time->format("h:i:s");
+    $date = $exam->date->format("Y-m-d");
     $now = Carbon\Carbon::now();
 
-    if ($now->format('Y-m-d') == $dateC || $now->format('h:i:s') >= $startTimeC && $now->format('h:i:s') <= $endTimeC) {
+
+    if ($now->format('Y-m-d') == $date || $now->format('h:i:s') >= $startTime && $now->format('h:i:s') <= $endTime) {
         $result = $exam->examResult;
         if (empty($result[0]) == true) {
             return true;

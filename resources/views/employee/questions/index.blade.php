@@ -41,7 +41,7 @@
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#exampleModalCenter" style="float: left">
-                                    <i class="fas fa-plus"></i>&nbsp;أضافة أسئلة
+                                    <i class="fas fa-plus"></i>&nbsp;اضافة أسئلة
                                 </button>
 
                                 <a href="/file/ExportFormQuestions.xlsx">
@@ -56,7 +56,7 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalLongTitle">أضافة أسئلة</h5>
+                                                <h5 class="modal-title" id="exampleModalLongTitle">اضافة أسئلة</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
@@ -72,50 +72,54 @@
                                                                 <label for="exampleInputFile">رفع ملف</label>
                                                                 <div class="form-group">
                                                                     <div class="input-group">
-                                                                        <input type="text" class="form-control" readonly>
+                                                                        <input type="text" class="form-control"
+                                                                               readonly>
                                                                         <div class="input-group-btn">
                                                                           <span class="fileUpload btn btn-info">
-                                                                              <span class="upl" id="upload">رفع ملف اكسل</span>
-                                                                              <input type="file" class="upload up" id="up" onchange="readURL(this);" />
+                                                                              <span class="upl"
+                                                                                    id="upload">رفع ملف اكسل</span>
+                                                                              <input type="file" class="upload up"
+                                                                                     id="up" onchange="readURL(this);" name="import_file"/>
                                                                             </span><!-- btn-orange -->
                                                                         </div><!-- btn -->
                                                                     </div><!-- group -->
                                                                 </div><!-- form-group -->
-{{--                                                                <div class="input-group">--}}
-{{--                                                                    <div class="custom-file">--}}
-{{--                                                                        <input type="file" class="custom-file-input"--}}
-{{--                                                                               name="import_file" id="customFile">--}}
-{{--                                                                        <label class="custom-file-label"--}}
-{{--                                                                               for="exampleInputFile">أختار ملف أكسل:--}}
-{{--                                                                            .xlsx, .xls</label></div>--}}
-{{--                                                                </div>--}}
+
+                                                            </div>
+
+                                                        </div>
+                                                        <div class=" col-lg-12 col-sm-6">
+                                                            <div class="form-group">
+                                                                <button type="submit" class="btn btn-success">حفظ ملف الاكسل
+                                                                </button>
                                                             </div>
 
                                                         </div>
 
                                                     </div>
                                                 </div>
-                                                <div class="modal-body">
-                                                    <div class="row">
-                                                        <div class=" col-lg-6 col-sm-6">
-                                                            <a href="{{route('employee.questions.create', $exam_id)}}">
-                                                                <button type="button" class="btn btn-primary"
-                                                                        data-toggle="modal"
-                                                                        id='floatrightitem'>
-                                                                    <i class="fas fa-plus"></i>&nbsp;أضافة سؤال واحد
-                                                                </button>
-                                                            </a>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                            data-dismiss="modal">أغلاق
-                                                    </button>
-                                                    <button type="submit" class="btn btn-primary">حفظ</button>
-                                                </div>
                                             </form>
+                                            <div class="modal-body">
+
+                                                <div class="row">
+                                                    <div class=" col-lg-6 col-sm-6">
+                                                        <a href="{{route('employee.questions.create', $exam_id)}}">
+                                                            <button type="button" class="btn btn-primary"
+                                                                    data-toggle="modal"
+                                                                    id='floatrightitem'>
+                                                                <i class="fas fa-plus"></i>&nbsp;اضافة سؤال واحد
+                                                            </button>
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">أغلاق
+                                                </button>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>

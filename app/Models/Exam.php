@@ -13,6 +13,8 @@ class Exam extends Model
 
     protected $guarded = [];
 
+    protected $dates = ['date', 'start_time', 'end_time'];
+
     public function course()
     {
         return $this->belongsTo(Course::class)->with('availablecourse', 'mark');
