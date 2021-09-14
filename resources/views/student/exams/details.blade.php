@@ -1,6 +1,6 @@
 @extends('student.layout.app')
 @section('title')
-    Details Exam
+    تفاصيل الامتحان
 @stop
 @section('css')
     <!-- DataTables -->
@@ -15,12 +15,15 @@
 @endsection
 @section('page-header')
     <div class="col-sm-6">
-        <h1 class="m-0">Details Exam</h1>
+        <h1 class="m-0">{{"(".$exam->getTypeString().") ".$exam->course->name_ar}}</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard v1</li>
+            <li class="breadcrumb-item"><a href="/student">الصفحة الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="{{route('student.subject')}}">المواد</a></li>
+            <li class="breadcrumb-item"><a
+                    href="{{route('student.exams.index', $exam->course->id)}}">{{$exam->course->name_ar}}</a></li>
+            <li class="breadcrumb-item active">{{"(".$exam->getTypeString().") ".$exam->course->name_ar}}</li>
         </ol>
     </div><!-- /.col -->
 @endsection
@@ -68,16 +71,19 @@
     <br>
     <div class="container-fluid">
 
-        <h1>{{Carbon\Carbon::now()}}</h1>
-{{--                        {{dd(checkStartExam($exam))}}--}}
+        {{--                        {{dd(checkStartExam($exam))}}--}}
         <div class="row" style="margin-top: 24px;text-align: center;">
             <div class="col-12">
-                <button type="button" class="btn btn-success" data-toggle="modal"
-                        data-target="#exampleModalCenter" style="width: 15%;"
-                        @if(studentPassFinalExam($exam) || !checkStartExam($exam))
-                        disabled @endif>
-                    <i class="fas fa-play"></i>&nbsp;Exam started
-                </button>
+                @if(studentPassFinalExam($exam) || !checkStartExam($exam))
+                    <button type="button" class="btn btn-danger" style="width: 18%;" disabled>
+                        <i class="fas fa-play"></i>&nbsp;الامتحان غير متاح
+                    </button>
+                @else
+                    <button type="button" class="btn btn-success" data-toggle="modal"
+                            data-target="#exampleModalCenter" style="width: 15%;">
+                        <i class="fas fa-play"></i>&nbsp;الامتحان متاح
+                    </button>
+                @endif
 
             </div>
         </div>
@@ -115,7 +121,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">ملخص محاولات السابقة</h3>
+                <h3 class="card-title">ملخص المحاولات السابقة</h3>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">
@@ -141,7 +147,7 @@
                                         <button class="btn btn-info btn-sm"
                                                 style="margin-right: 10px;">
                                             <i class="fas fa-eye"></i>
-                                            View
+                                            عرض
                                         </button>
                                     </a>
                                 @endif
@@ -187,9 +193,6 @@
                 $(this).bootstrapSwitch('state', $(this).prop('checked'));
             })
         })
-
-        var now = new Date().getTime();
-        console.log(now);
     </script>
 
 @endsection

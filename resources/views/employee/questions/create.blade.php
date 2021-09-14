@@ -1,18 +1,20 @@
 @extends('employee.layout.app')
 @section('title')
-Create Questions
+    {{"(".$exam->getTypeString().") ".$exam->course->name_ar}}
 @stop
 @section('css')
 
 @endsection
 @section('page-header')
 <div class="col-sm-6">
-    <h1 class="m-0">إضافة أسئلة</h1>
+    <h1 class="m-0">{{"(".$exam->getTypeString().") ".$exam->course->name_ar}}</h1>
 </div><!-- /.col -->
-<div class="col-sm-6">
+<div class="col-sm-12">
     <ol class="breadcrumb float-sm-right">
-        <li class="breadcrumb-item active">الأسئلة</li>
-        <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
+        <li class="breadcrumb-item"><a href="/employee">الصفحة الرئيسية</a></li>
+        <li class="breadcrumb-item"><a href="{{route('employee.subject')}}">المواد</a></li>
+        <li class="breadcrumb-item"><a href="{{route('employee.exams.index', $exam->course->id)}}">{{$exam->course->name_ar}}</a></li>
+        <li class="breadcrumb-item active">{{$exam->getTypeString()}}</li>
     </ol>
 </div><!-- /.col -->
 @endsection
@@ -23,13 +25,13 @@ Create Questions
         <div class="col-12">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title" id='floatrightitem' >إضافة أسئلة</h3>
+                    <h3 class="card-title" id='floatrightitem' >إضافة سؤال</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
                 <form method="post" action="{{route('employee.questions.store')}}" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="exam_id" value="{{$exam_id}}">
+                    <input type="hidden" name="exam_id" value="{{$exam->id}}">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-12">

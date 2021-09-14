@@ -15,12 +15,13 @@
 @endsection
 @section('page-header')
     <div class="col-sm-6">
-        <h1 class="m-0">Exam Student</h1>
+        <h1 class="m-0">الامتحانات</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard v1</li>
+            <li class="breadcrumb-item"><a href="/student">الصفحة الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="{{route('student.subject')}}">المواد</a></li>
+            <li class="breadcrumb-item active">{{$course_name}}</li>
         </ol>
     </div><!-- /.col -->
 @endsection
@@ -33,7 +34,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class=" col-lg-6 col-sm-6">
-                                <h3 class="card-title">Exam Student</h3>
+                                <h3 class="card-title" id="floatrightitem">{{$course_name}}</h3>
                             </div>
                         </div>
                     </div>
@@ -69,7 +70,7 @@
                                 </tr>
                             @endforeach
                             </tbody>
-           >
+
                         </table>
                     </div>
                     <!-- /.card-body -->

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
+use App\Models\EmployeeModels\Course;
 use App\Models\EmployeeModels\Mark;
 use App\Models\EmployeeModels\Semester;
 use App\Models\Exam;
@@ -20,6 +21,7 @@ class ExamsController extends Controller
 
     public function showAllExams($id)
     {
+        $course = Course::findOrFail($id);
         if (isCourseRegisterForStudent($id)) {
             $datetimeNow = Carbon::now()->addWeek(1)->format('Y-m-d');
             $exam = Exam::with('course')
@@ -32,6 +34,7 @@ class ExamsController extends Controller
         //$exam = Exam::with('course')->where('course_id', $id)->get();
         return view('student.exams.index', [
             'exams' => $exam,
+            'course_name' => $course->name_ar
         ]);
     }
 
@@ -262,7 +265,7 @@ class ExamsController extends Controller
             }
 
 //        dd($request->input('mark'));
-            return view('employee.review.questions', [
+            return view('student.exams.review-questions', [
                 'exam_name' => $course_name,
                 'student_name' => $student->getFullname(),
                 'questions' => $questions,

@@ -28,6 +28,16 @@
     <div class="col-sm-6">
         <h1 class="m-0">{{$exam_name}}</h1>
     </div><!-- /.col -->
+    <div class="col-sm-12">
+        <ol class="breadcrumb float-sm-right">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/employee">الصفحة الرئيسية</a></li>
+                <li class="breadcrumb-item"><a href="{{route('employee.subject')}}">المواد</a></li>
+                <li class="breadcrumb-item"><a href="{{route('employee.exams.index', $questions[0]->exam->course->id)}}">{{$questions[0]->exam->course->name_ar}}</a></li>
+                <li class="breadcrumb-item active">{{$questions[0]->exam->getTypeString()}}</li>
+            </ol>
+        </ol>
+    </div><!-- /.col -->
 @endsection
 @section('content')
 
@@ -36,7 +46,7 @@
         <div class="row">
             <div class="col-lg-12 col-sm-12">
                 <!-- general form elements -->
-                <div class="card card-primary">
+                <div class="card">
                     <div class="card-header">
                         <h5>{{$student_name}}</h5>
                     </div>

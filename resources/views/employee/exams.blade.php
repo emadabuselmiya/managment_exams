@@ -1,6 +1,6 @@
 @extends('employee.layout.app')
 @section('title')
-    الأمتحانات
+    {{$exams[0]->course->name_ar}}
 @stop
 @section('css')
     <!-- DataTables -->
@@ -14,12 +14,13 @@
 @endsection
 @section('page-header')
     <div class="col-sm-6">
-        <h1 class="m-0">الأمتحانات</h1>
+        <h1 class="m-0">{{$exams[0]->course->name_ar}}</h1>
     </div><!-- /.col -->
     <div class="col-sm-6">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
-            <li class="breadcrumb-item active">الأمتحانات</li>
+            <li class="breadcrumb-item"><a href="/employee">الصفحة الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="{{route('employee.subject')}}">المواد</a></li>
+            <li class="breadcrumb-item active">{{$exams[0]->course->name_ar}}</li>
         </ol>
     </div><!-- /.col -->
 @endsection
@@ -32,7 +33,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class=" col-lg-6 col-sm-6">
-                                <h3 class="card-title" id='floatrightitem'>الأمتحانات</h3>
+                                <h1 class="card-title" id='floatrightitem'>الامتحانات</h1>
                             </div>
                             <div class=" col-lg-6 col-sm-6">
                                 <!-- Button trigger modal -->
@@ -177,11 +178,12 @@
                             <thead>
                             <tr>
                                 <th id="widthcol">#</th>
-                                <th>أسم الامتحان</th>
+                                <th>نوع الامتحان</th>
                                 <th>عدد الأسئلة</th>
-                                <th>المادة</th>
-                                <th class="sort-no-content">أمكانية الرجوع للخلف</th>
-                                <th class="sort-no-content">أمكانية المراجعة</th>
+                                <th>درجة الامتحان</th>
+                                <th class="sort-no-content"> الرجوع للخلف</th>
+                                <th class="sort-no-content"> المراجعة</th>
+                                <th class="sort-no-content"> مشاهدة نتيجة</th>
                                 <th class="sort-no-content">العمليات</th>
                             </tr>
                             </thead>
@@ -191,7 +193,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$exam->getTypeString()}}</td>
                                     <td>{{$exam->number_of_questions}}</td>
-                                    <td>{{$exam->course->name_ar}}</td>
+                                    <td>{{$exam->weight}}</td>
                                     <td class="text-md-center">
                                         @if($exam->back == 1)
                                             <span class="badge  bg-success bb">فعال</span>
@@ -201,6 +203,13 @@
                                     </td>
                                     <td class="text-md-center">
                                         @if($exam->review == 1)
+                                            <span class="badge bg-success">فعال</span>
+                                        @else
+                                            <span class="badge bg-danger">معطل</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-md-center">
+                                        @if($exam->show_result == 1)
                                             <span class="badge bg-success">فعال</span>
                                         @else
                                             <span class="badge bg-danger">معطل</span>
@@ -424,11 +433,12 @@
                             <tfoot>
                             <tr>
                                 <th id="widthcol">#</th>
-                                <th>اسم الامتحان</th>
+                                <th>نوع الامتحان</th>
                                 <th>عدد الاسئلة</th>
-                                <th>المادة</th>
-                                <th>أمكانية الرجوع للخلف</th>
-                                <th>أمكانية المراجعة</th>
+                                <th>درجة الامتحان</th>
+                                <th> الرجوع للخلف</th>
+                                <th> المراجعة</th>
+                                <th> مشاهدة نتيجة</th>
                                 <th>العمليات</th>
                             </tr>
                             </tfoot>

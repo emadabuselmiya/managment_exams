@@ -19,10 +19,12 @@
     <div class="col-sm-6">
         <h1 class="m-0">الاسئلة</h1>
     </div><!-- /.col -->
-    <div class="col-sm-6">
-        <ol class="breadcrumb float-sm-right float-lg-right">
-            <li class="breadcrumb-item">الصفحة الرئيسية</li>
-            <li class="breadcrumb-item active">أضافة</li>
+    <div class="col-sm-12">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/employee">الصفحة الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="{{route('employee.subject')}}">المواد</a></li>
+            <li class="breadcrumb-item"><a href="{{route('employee.exams.index', $exam->course->id)}}">{{$exam->course->name_ar}}</a></li>
+            <li class="breadcrumb-item active">{{$exam->getTypeString()}}</li>
         </ol>
     </div><!-- /.col -->
 @endsection
@@ -64,7 +66,7 @@
                                             </div>
                                             <form method="POST" action="{{route('employee.questions.import')}}" enctype="multipart/form-data">
                                                 @csrf
-                                                <input type="hidden" name="exam_id" value="{{$exam_id}}">
+                                                <input type="hidden" name="exam_id" value="{{$exam->id}}">
                                                 <div class="modal-body">
                                                     <div class="row">
                                                         <div class=" col-lg-12 col-sm-6">
@@ -103,7 +105,7 @@
 
                                                 <div class="row">
                                                     <div class=" col-lg-6 col-sm-6">
-                                                        <a href="{{route('employee.questions.create', $exam_id)}}">
+                                                        <a href="{{route('employee.questions.create', $exam->id)}}">
                                                             <button type="button" class="btn btn-primary"
                                                                     data-toggle="modal"
                                                                     id='floatrightitem'>
@@ -161,7 +163,7 @@
                                         <div class="row">
                                             <div class=" col-lg-6 col-sm-6" style="text-align:right;">
                                                 <a class="btn btn-info btn-sm"
-                                                   href="/employee/{{$exam_id}}/questions/{{$question->id}}/edit">
+                                                   href="/employee/{{$exam->id}}/questions/{{$question->id}}/edit">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
                                                 </a>

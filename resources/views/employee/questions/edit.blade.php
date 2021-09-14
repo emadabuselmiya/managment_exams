@@ -1,20 +1,21 @@
 @extends('employee.layout.app')
 @section('title')
-Edit Question
+    {{"(".$exam->getTypeString().") ".$exam->course->name_ar}}
 @stop
 @section('css')
 
 @endsection
 @section('page-header')
-<div class="col-sm-6">
-    <h1 class="m-0">تعديل السؤال</h1>
-</div><!-- /.col -->
-<div class="col-sm-6">
-    <ol class="breadcrumb float-sm-right">
-        <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
-        <li class="breadcrumb-item active">تعديل السؤال</li>
-    </ol>
-</div><!-- /.col -->
+    <div class="col-sm-6">
+        <h1 class="m-0">{{"(".$exam->getTypeString().") ".$exam->course->name_ar}}</h1>
+    </div><!-- /.col -->
+    <div class="col-sm-12">
+        <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="/employee">الصفحة الرئيسية</a></li>
+            <li class="breadcrumb-item"><a href="{{route('employee.subject')}}">المواد</a></li>
+            <li class="breadcrumb-item"><a href="{{route('employee.exams.index', $exam->course->id)}}">{{$exam->course->name_ar}}</a></li>
+            <li class="breadcrumb-item active">{{$exam->getTypeString()}}</li>
+        </ol>
 @endsection
 @section('content')
 
@@ -30,7 +31,7 @@ Edit Question
                 <form method="post" action="{{route('employee.questions.update', $question->id)}}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <input type="hidden" name="exam_id" value="{{$exam_id}}">
+                    <input type="hidden" name="exam_id" value="{{$exam->id}}">
                     <div class="card-body">
                         <div class="row">
                             <div class="form-group">

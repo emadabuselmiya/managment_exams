@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Employee;
 
 use App\Http\Controllers\Controller;
 use App\Imports\QuestionsImport;
+use App\Models\Exam;
 use App\Models\Question;
 use Illuminate\Http\Request;
 
@@ -16,10 +17,12 @@ class QuestionsController extends Controller
      */
     public function index($id)
     {
+        $exam = Exam::findOrFail($id);
+
         $questions = Question::where('exam_id', '=', $id)->get();
         return view('employee.questions.index', [
             'questions' => $questions,
-            'exam_id' => $id,
+            'exam' => $exam,
         ]);
     }
 
@@ -30,8 +33,10 @@ class QuestionsController extends Controller
      */
     public function create($id)
     {
+        $exam = Exam::findOrFail($id);
+
         return view('employee.questions.create', [
-            'exam_id' => $id,
+            'exam' => $exam,
         ]);
     }
 
@@ -107,9 +112,11 @@ class QuestionsController extends Controller
     public function edit($exam_id, $question_id)
     {
         $question = Question::findOrFail($question_id);
+        $exam = Exam::findOrFail($exam_id);
+
         return view('employee.questions.edit', [
             'question' => $question,
-            'exam_id' => $exam_id,
+            'exam' => $exam,
         ]);
     }
 

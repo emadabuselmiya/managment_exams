@@ -15,12 +15,16 @@
 @endsection
 @section('page-header')
     <div class="col-sm-6">
-        <h1 class="m-0">Student Exam</h1>
+        <h1 class="m-0">    {{"(".$exam->getTypeString().") ".$exam->course->name_ar}}</h1>
     </div><!-- /.col -->
-    <div class="col-sm-6">
+    <div class="col-sm-12">
         <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard v1</li>
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/employee">الصفحة الرئيسية</a></li>
+                <li class="breadcrumb-item"><a href="{{route('employee.subject')}}">المواد</a></li>
+                <li class="breadcrumb-item"><a href="{{route('employee.exams.index', $exam->course->id)}}">{{$exam->course->name_ar}}</a></li>
+                <li class="breadcrumb-item active">{{$exam->getTypeString()}}</li>
+            </ol>
         </ol>
     </div><!-- /.col -->
 @endsection
@@ -34,7 +38,7 @@
                         <div class="row">
                             <div class=" col-lg-6 col-sm-6">
                                 <h3 class="card-title"
-                                    style="float: right">{{"(".$exam->getTypeString().") ".$exam->course->name_ar}}</h3>
+                                        style="float: right">نتائج الطلاب في الامتحان</h3>
                             </div>
                         </div>
                     </div>
@@ -44,10 +48,10 @@
                             <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Student ID</th>
-                                <th>Student Name</th>
-                                <th>Student's Mark</th>
-                                <th>Actions</th>
+                                <th>رقم الطالب</th>
+                                <th>اسم الطالب</th>
+                                <th>علامة الطالب</th>
+                                <th>العمليات</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -65,7 +69,7 @@
                                                 <button class="btn btn-info btn-sm"
                                                         style="margin-right: 10px;">
                                                     <i class="fas fa-eye"></i>
-                                                    View
+                                                    مراجعة
                                                 </button>
                                             </a>
                                         </div>
@@ -76,10 +80,10 @@
                             <tfoot>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Student ID</th>
-                                <th>Student Name</th>
-                                <th>Student's Mark</th>
-                                <th>Actions</th>
+                                <th>رقم الطالب</th>
+                                <th>اسم الطالب</th>
+                                <th>علامة الطالب</th>
+                                <th>العمليات</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -91,14 +95,7 @@
     </div>
 @endsection
 @section('js')
-    <!-- DataTables  & Plugins -->
-    <script>
-        import App from "../../../../public/js/app";
 
-        export default {
-            components: {App}
-        }
-    </script>
     <script src="{{asset('dashboard/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
     <script src="{{asset('dashboard/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
     <script src="{{asset('dashboard/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>

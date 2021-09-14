@@ -31,7 +31,7 @@
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">الصفحة الرئيسية</a></li>
+                            <li class="breadcrumb-item"><a href="/employee">الصفحة الرئيسية</a></li>
                             <li class="breadcrumb-item active">لوحة التحكم</li>
                         </ol>
                     </div><!-- /.col -->
