@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Student;
 use App\Http\Controllers\Controller;
 use App\Models\EmployeeModels\Availablecourse;
 use App\Models\EmployeeModels\Mark;
+use App\Models\EmployeeModels\Semester;
 use App\Models\Exam;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,7 +34,11 @@ class HomeController extends Controller
     public function subject()
     {
         $student_id = Auth::guard('student')->user()->id;
-        $mark = Mark::where('student_id', $student_id)->get();
+        $current_semester = Semester::where('active', 1)->select('id')->first();
+        $mark = Mark::where('student_id', $student_id)
+            ->where('semester_id', $current_semester->id)
+            ->where('study_status', '<>', 'W')
+            ->get();
         return view('student.subject', [
             'courses' => $mark,
         ]);

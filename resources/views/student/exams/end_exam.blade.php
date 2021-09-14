@@ -169,5 +169,8 @@
         document.addEventListener("contextmenu", function(evt){
             evt.preventDefault();
         }, false);
+
+        window.addEventListener('online', () => console.log('Became online'));
+        window.addEventListener('offline', () => console.log('Became offline'));
     </script>
 @endsection

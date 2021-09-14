@@ -36,7 +36,7 @@
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>رقم المادة</th>
-                                <th>أسم المادة</th>
+                                <th>اسم المادة</th>
                                 <th>العمليات</th>
                             </tr>
                             </thead>
@@ -63,7 +63,7 @@
                             <tr>
                                 <th style="width: 10px">#</th>
                                 <th>رقم المادة</th>
-                                <th>أسم العمليات</th>
+                                <th>اسم المادة</th>
                                 <th>العمليات</th>
                             </tr>
                             </tfoot>

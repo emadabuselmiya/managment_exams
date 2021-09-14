@@ -70,8 +70,8 @@
                                                                         @if(old('type')=='mid') SELECTED @endif>
                                                                     نصفي
                                                                 </option>
-                                                                <option value="mon"
-                                                                        @if(old('type')=='mon') SELECTED @endif>
+                                                                <option value="quiz"
+                                                                        @if(old('type')=='quiz') SELECTED @endif>
                                                                     شهري
                                                                 </option>
 
@@ -271,8 +271,8 @@
                                                                                         @if(old('type',$exam->type)=='mid') SELECTED @endif>
                                                                                     نصفي
                                                                                 </option>
-                                                                                <option value="mon"
-                                                                                        @if(old('type',$exam->type)=='mon') SELECTED @endif>
+                                                                                <option value="quiz"
+                                                                                        @if(old('type',$exam->type)=='quiz') SELECTED @endif>
                                                                                     شهري
                                                                                 </option>
 

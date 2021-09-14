@@ -21,7 +21,6 @@ class ExamsController extends Controller
      */
     public function index($id = null)
     {
-
         if ($id == 0) {
             $exams = Exam::with('questions', 'course')
                 ->withCount('questions')/*questions_count*/

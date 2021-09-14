@@ -1,6 +1,8 @@
 <?php
 
 
+use App\Models\EmployeeModels\Mark;
+use App\Models\EmployeeModels\Semester;
 use App\Models\StudentQuestionExam;
 use Illuminate\Support\Facades\Auth;
 
@@ -48,16 +50,10 @@ function getOption($type)
 
 function calTime($exam)
 {
-    $timeStart = $exam->course->availablecourse[0]->getStartTime($exam->type);
-    $timeEnd = $exam->course->availablecourse[0]->getEndTime($exam->type);
+    $timeStart = $exam->start_time;
+    $timeEnd = $exam->end_time;
 
-//    $dteStart = new DateTime($timeStart);
-//    $dteEnd   = new DateTime($timeEnd);
-//    $diff = $dteStart->diff($dteEnd);
-
-    $t1 = Carbon\Carbon::parse($timeStart);
-    $t2 = Carbon\Carbon::parse($timeEnd);
-    $diff = $t1->diff($t2);
+    $diff = $timeStart->diff($timeEnd);
 
     return $diff->format("%H:%I:%S");
 }
@@ -69,10 +65,10 @@ function checkStartExam($exam)
     $date = $exam->date->format("Y-m-d");
     $now = Carbon\Carbon::now();
 
-
-    if ($now->format('Y-m-d') == $date || $now->format('h:i:s') >= $startTime && $now->format('h:i:s') <= $endTime) {
-        $result = $exam->examResult;
-        if (empty($result[0]) == true) {
+    $result = $exam->examResult;
+//    dd($result->isEmpty());
+    if ($result->isEmpty()) {
+        if ($now->format('Y-m-d') == $date || $now->format('h:i:s') >= $startTime && $now->format('h:i:s') <= $endTime) {
             return true;
         }
     }
@@ -114,12 +110,11 @@ function numberQuestions($id)
 
 function getEndTime($exam_id)
 {
-    $exam = \App\Models\Exam::find($exam_id);
-    $endTime = $exam->course->availablecourse[0]->getEndTime($exam->type);
+    $exam = \App\Models\Exam::findOrFail($exam_id);
+    $endTime = $exam->end_time->format("Y-m-d H:i:s");
 //    $datetime = $endTime->format('%H:%I:%S');
 
-    $datetime = Carbon\Carbon::parse($endTime)->format("Y-m-d H:i:s");
-    return $datetime;
+    return $endTime;
 }
 
 function getMarkStudent($mark, $exam)
@@ -147,6 +142,41 @@ function getRightAnswer($question)
         return $question->optionC;
     } else {
         return $question->optionD;
+    }
+}
+
+function isCourseRegisterForStudent($course_id)
+{
+    $student_id = Auth::guard('student')->user()->id;
+    $current_semester = Semester::where('active', 1)->select('id')->first();
+    $mark = Mark::where('student_id', $student_id)
+        ->where('semester_id', $current_semester->id)
+        ->where('course_id', $course_id)
+        ->where('study_status', '<>', 'W')
+        ->get();
+    if (!empty($mark[0])) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function studentPassFinalExam($exam)
+{
+    $student_id = Auth::guard('student')->user()->id;
+    $current_semester = Semester::where('active', 1)->select('id')->first();
+    $course = Mark::where('student_id', $student_id)
+        ->where('semester_id', $current_semester->id)
+        ->where('course_id', $exam->course_id)
+        ->where('study_status', '<>', 'W')
+        ->first();
+
+    //dd($course);
+
+    if ($course->final_mark == null) {
+        return false;
+    } else {
+        return true;
     }
 }
 

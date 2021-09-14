@@ -8,6 +8,7 @@ use App\Models\EmployeeModels\Courseplan;
 use App\Models\EmployeeModels\Department;
 use App\Models\EmployeeModels\Major;
 use App\Models\EmployeeModels\Plan;
+use App\Models\EmployeeModels\Semester;
 use App\Models\EmployeeModels\Semesterinstructor;
 use Illuminate\Support\Facades\Auth;
 

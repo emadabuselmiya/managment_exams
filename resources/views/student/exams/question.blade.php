@@ -148,6 +148,7 @@
     <script>
         // Set the date we're counting down to
         var countDownDate = new Date("{{getEndTime($exam->id)}}").getTime();
+        console.log(countDownDate)
         // Update the count down every 1 second
         var x = setInterval(function () {
             // Get today's date and time
@@ -166,7 +167,7 @@
             // If the count down is over, write some text
             if (distance < 0) {
                 clearInterval(x);
-                window.location.href = "{{route('student.exams.check', $exam->id)}}";
+                {{--window.location.href = "{{route('student.exams.check', $exam->id)}}";--}}
                 document.getElementById("demo").innerHTML = "EXPIRED";
             }
         }, 1000);
@@ -176,6 +177,9 @@
         document.addEventListener("contextmenu", function(evt){
             evt.preventDefault();
         }, false);
+
+        window.addEventListener('online', () => console.log('Became online'));
+        window.addEventListener('offline', () => console.log('Became offline'));
     </script>
 
 

@@ -52,9 +52,9 @@
                     </div>
                     <div class="card-body">
                         1. اسم الامتحان: {{"(".$exam->getTypeString().") ".$exam->course->name_ar}} <br>
-                        2. التاريخ: {{$exam->course->availablecourse[0]->getDate($exam->type)}} <br>
-                        3. وقت بدأ الامتحان: {{$exam->course->availablecourse[0]->getStartTime($exam->type)}} <br>
-                        4. وقت انتهاء الامتحان: {{$exam->course->availablecourse[0]->getEndTime($exam->type)}} <br>
+                        2. التاريخ: {{$exam->date->format('Y-m-d')}} <br>
+                        3. وقت بدأ الامتحان: {{$exam->start_time->format('g:i A')}} <br>
+                        4. وقت انتهاء الامتحان: {{$exam->end_time->format('g:i A')}} <br>
                         5. مدة الامتحان: {{calTime($exam)}} <br>
 
                     </div>
@@ -69,18 +69,16 @@
     <div class="container-fluid">
 
         <h1>{{Carbon\Carbon::now()}}</h1>
-        {{--                {{dd(checkStartExam($exam))}}--}}
+{{--                        {{dd(checkStartExam($exam))}}--}}
         <div class="row" style="margin-top: 24px;text-align: center;">
             <div class="col-12">
-                {{--                <a href="{{route('student.exams.start', $exam->id)}}" target="popup"--}}
-                {{--                   onclick="window.open('{{route('student.exams.start', $exam->id)}}','name','width=2000,height=1000')">--}}
                 <button type="button" class="btn btn-success" data-toggle="modal"
                         data-target="#exampleModalCenter" style="width: 15%;"
-                        @if(checkStartExam($exam) === false)
+                        @if(!checkStartExam($exam) && studentPassFinalExam($exam))
                         disabled @endif>
                     <i class="fas fa-play"></i>&nbsp;Exam started
                 </button>
-                {{--                </a>--}}
+
             </div>
         </div>
         <br>
@@ -124,11 +122,11 @@
                     <thead>
                     <tr>
                         <th style="width: 10px">#</th>
-                        <th>Name Subject</th>
-                        <th>Value</th>
-                        <th>Review</th>
-                        <th>Delivery time</th>
-                        <th style="width: 40px">Status</th>
+                        <th>اسم الامتحان</th>
+                        <th>العلامة</th>
+                        <th>المراجعة</th>
+                        <th>وقت الانتهاء</th>
+                        <th style="width: 40px">الحالة</th>
                     </tr>
                     </thead>
                     <tbody>

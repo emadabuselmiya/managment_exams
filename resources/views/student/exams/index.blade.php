@@ -43,11 +43,11 @@
                             <thead>
                             <tr>
                                 <th style="width: 10px">#</th>
-                                <th>Exam Name</th>
-                                <th>Exam Date</th>
-                                <th>Start Exam Time</th>
-                                <th>Exam Duration</th>
-                                <th>Actions</th>
+                                <th>اسم الامتحان</th>
+                                <th>تاريخ الامتحان</th>
+                                <th>موعد بدأ الامتحان</th>
+                                <th>مدة الامتحان</th>
+                                <th>العمليات</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -55,8 +55,8 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{"(".$exam->getTypeString().") ".$exam->course->name_ar}}</td>
-                                    <td>{{$exam->course->availablecourse[0]->getDate($exam->type)}}</td>
-                                    <td>{{$exam->course->availablecourse[0]->getStartTime($exam->type)}}</td>
+                                    <td>{{$exam->date->format('Y-m-d')}}</td>
+                                    <td>{{$exam->start_time->format('g:i A')}}</td>
                                     <td>{{calTime($exam)}}</td>
                                     <td>
                                         <div class="row" id="centeritem">
@@ -69,16 +69,7 @@
                                 </tr>
                             @endforeach
                             </tbody>
-                            <tfoot>
-                            <tr>
-                                <th style="width: 10px">#</th>
-                                <th>Exam Name</th>
-                                <th>Exam Date</th>
-                                <th>Start Exam Time</th>
-                                <th>Exam Duration</th>
-                                <th>Actions</th>
-                            </tr>
-                            </tfoot>
+           >
                         </table>
                     </div>
                     <!-- /.card-body -->
