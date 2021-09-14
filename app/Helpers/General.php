@@ -163,20 +163,20 @@ function isCourseRegisterForStudent($course_id)
 
 function studentPassFinalExam($exam)
 {
-    $student_id = Auth::guard('student')->user()->id;
-    $current_semester = Semester::where('active', 1)->select('id')->first();
-    $course = Mark::where('student_id', $student_id)
-        ->where('semester_id', $current_semester->id)
-        ->where('course_id', $exam->course_id)
-        ->where('study_status', '<>', 'W')
-        ->first();
+    if($exam->type == 'final') {
+        $student_id = Auth::guard('student')->user()->id;
+        $current_semester = Semester::where('active', 1)->select('id')->first();
+        $course = Mark::where('student_id', $student_id)
+            ->where('semester_id', $current_semester->id)
+            ->where('course_id', $exam->course_id)
+            ->where('study_status', '<>', 'W')
+            ->first();
 
-    //dd($course);
-
-    if ($course->final_mark == null) {
-        return false;
-    } else {
-        return true;
+        if ($course->final_mark == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
 

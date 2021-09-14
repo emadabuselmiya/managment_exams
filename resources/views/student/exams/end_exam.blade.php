@@ -170,7 +170,7 @@
             evt.preventDefault();
         }, false);
 
-        window.addEventListener('online', () => console.log('Became online'));
-        window.addEventListener('offline', () => console.log('Became offline'));
+        window.addEventListener('online', () => toastr.success('متصل في الانترنت'));
+        window.addEventListener('offline', () => toastr.error('فقد الاتصال بالانترنت'));
     </script>
 @endsection

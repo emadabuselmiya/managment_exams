@@ -74,7 +74,7 @@
             <div class="col-12">
                 <button type="button" class="btn btn-success" data-toggle="modal"
                         data-target="#exampleModalCenter" style="width: 15%;"
-                        @if(!checkStartExam($exam) && studentPassFinalExam($exam))
+                        @if(studentPassFinalExam($exam) || !checkStartExam($exam))
                         disabled @endif>
                     <i class="fas fa-play"></i>&nbsp;Exam started
                 </button>
