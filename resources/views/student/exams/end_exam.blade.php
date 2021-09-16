@@ -73,7 +73,7 @@
                                         <input type="hidden" name="question_exam" value="{{$question->id}}">
                                         <button class="btn btn-info btn-sm" type="submit">
                                             <i class="fas fa-eye"></i>
-                                            View
+                                            مراجعة
                                         </button>
                                     </form>
                                 </td>

@@ -17,7 +17,7 @@
 @endsection
 @section('page-header')
     <div class="col-sm-6">
-        <h1 class="m-0">الاسئلة</h1>
+        <h1 class="m-0">{{"(".$exam->getTypeString().") ".$exam->course->name_ar}}</h1>
     </div><!-- /.col -->
     <div class="col-sm-12">
         <ol class="breadcrumb float-sm-right">

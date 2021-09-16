@@ -33,8 +33,8 @@
             <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="/employee">الصفحة الرئيسية</a></li>
                 <li class="breadcrumb-item"><a href="{{route('employee.subject')}}">المواد</a></li>
-                <li class="breadcrumb-item"><a href="{{route('employee.exams.index', $questions[0]->exam->course->id)}}">{{$questions[0]->exam->course->name_ar}}</a></li>
-                <li class="breadcrumb-item active">{{$questions[0]->exam->getTypeString()}}</li>
+                <li class="breadcrumb-item"><a href="{{route('employee.exams.index', $exam->course->id)}}">{{$questions[0]->exam->course->name_ar}}</a></li>
+                <li class="breadcrumb-item active">{{$exam->getTypeString()}}</li>
             </ol>
         </ol>
     </div><!-- /.col -->

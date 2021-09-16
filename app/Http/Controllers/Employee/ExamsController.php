@@ -162,6 +162,7 @@ class ExamsController extends Controller
             'student_name' => $student->getFullname(),
             'questions' => $questions,
             'mark' => $value,
+            'exam' => $exam,
         ]);
     }
 }

@@ -167,7 +167,7 @@
             // If the count down is over, write some text
             if (distance < 0) {
                 clearInterval(x);
-                window.location.href = "{{route('student.exams.check', $exam->id)}}";
+                {{--window.location.href = "{{route('student.exams.check', $exam->id)}}";--}}
                 document.getElementById("demo").innerHTML = "EXPIRED";
             }
         }, 1000);

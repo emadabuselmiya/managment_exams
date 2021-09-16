@@ -112,19 +112,11 @@
 
     <script>
         $(function () {
-            $("input[data-bootstrap-switch]").each(function () {
-                $(this).bootstrapSwitch('state', $(this).prop('checked'));
-            })
-
-        })
-    </script>
-    <script>
-        $(function () {
             $("#example1").DataTable({
                 "responsive": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "buttons": [, "excel", "pdf", "print"]
+                "buttons": ["excel", "pdf", "print"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
             $('#example2').DataTable({
                 "paging": true,
