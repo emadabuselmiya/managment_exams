@@ -60,19 +60,22 @@ function calTime($exam)
 
 function checkStartExam($exam)
 {
+    $student_id = Auth::guard('student')->user()->id;
     $startTime = $exam->start_time->format("h:i:s");
     $endTime = $exam->end_time->format("h:i:s");
     $date = $exam->date->format("Y-m-d");
     $now = Carbon\Carbon::now();
 
-    $result = $exam->examResult;
+    $result = $exam->examResult->where('student_id', $student_id)->first();
+//    dd($result);
 //    dd($result->isEmpty());
-    if ($result->isEmpty()) {
+    if ($result == null) {
         if ($now->format('Y-m-d') == $date || $now->format('h:i:s') >= $startTime && $now->format('h:i:s') <= $endTime) {
             return true;
         }
     }
     return false;
+
 }
 
 function randomOption($optionA, $optionB, $optionC, $optionD)
@@ -163,7 +166,7 @@ function isCourseRegisterForStudent($course_id)
 
 function studentPassFinalExam($exam)
 {
-    if($exam->type == 'final') {
+    if ($exam->type == 'final') {
         $student_id = Auth::guard('student')->user()->id;
         $current_semester = Semester::where('active', 1)->select('id')->first();
         $course = Mark::where('student_id', $student_id)

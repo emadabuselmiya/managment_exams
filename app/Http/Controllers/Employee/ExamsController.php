@@ -96,7 +96,7 @@ class ExamsController extends Controller
                 'start_time' => $request->input('start_time'),
                 'end_time' => $request->input('end_time'),
             ]);
-
+//            dd($exam);
         } catch (\Exception $e) {
         }
         toastr()->info('تمت عملية التعديل بنجاح');

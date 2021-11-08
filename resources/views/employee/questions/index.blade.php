@@ -138,7 +138,7 @@
                                 <th id="widthcol">#</th>
                                 <th>عنوان السؤال</th>
                                 <th>نوع السؤال</th>
-                                <th>مستوى السؤال</th>
+{{--                                <th>مستوى السؤال</th>--}}
                                 <th id="widthcol">أ</th>
                                 <th id="widthcol">ب</th>
                                 <th id="widthcol">ج</th>
@@ -151,9 +151,9 @@
                             @foreach($questions as $question)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td><span class="limit-text">{{strip_tags($question->title)}}</span></td>
+                                    <td><span class="limit-text1">{{strip_tags($question->title)}}</span></td>
                                     <td>{{getTypeQuestionString($question->type)}}</td>
-                                    <td>{{getCategoryString($question->category)}}</td>
+{{--                                    <td>{{getCategoryString($question->category)}}</td>--}}
                                     <td>{{$question->optionA}}</td>
                                     <td>{{$question->optionB}}</td>
                                     <td>{{$question->optionC}}</td>
@@ -215,7 +215,7 @@
                                 <th id="widthcol">#</th>
                                 <th>عنوان السؤال</th>
                                 <th>نوع السؤال</th>
-                                <th>مستوى السؤال</th>
+{{--                                <th>مستوى السؤال</th>--}}
                                 <th id="widthcol">أ</th>
                                 <th id="widthcol">ب</th>
                                 <th id="widthcol">ج</th>

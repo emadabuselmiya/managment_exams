@@ -25,7 +25,6 @@ class AlterExamsTable extends Migration
             $table->time('end_time')
                 ->nullable()
                 ->after('start_time');
-
         });
     }
 

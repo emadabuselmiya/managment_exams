@@ -72,6 +72,7 @@
     {{-- {{dd(checkStartExam($exam))}}--}}
     <div class="row" style="margin-top: 24px;text-align: center;">
         <div class="col-12">
+{{--            {{dd(studentPassFinalExam($exam) || !checkStartExam($exam))}}--}}
             @if(studentPassFinalExam($exam) || !checkStartExam($exam))
             <button type="button" class="btn btn-danger btn-available"   disabled>
                 <i class="fas fa-play"></i>&nbsp;الامتحان غير متاح

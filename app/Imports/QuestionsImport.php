@@ -32,17 +32,17 @@ class QuestionsImport implements ToModel, WithHeadingRow, SkipsOnError, WithVali
 
     public function model(array $row)
     {
-        $answer = "option" . $row['answer'];
-        $category = 0;
+        $answer = "option" . strtoupper($row['answer']);
+//        $category = 0;
         $type = 0;
-        if ($row['category'] == 'صعب') {
-            $category = 3;
-        } else if ($row['category'] == 'متوسط') {
-            $category = 2;
-
-        } else if ($row['category'] == 'سهل') {
-            $category = 1;
-        }
+//        if ($row['category'] == 'صعب') {
+//            $category = 3;
+//        } else if ($row['category'] == 'متوسط') {
+//            $category = 2;
+//
+//        } else if ($row['category'] == 'سهل') {
+//            $category = 1;
+//        }
 
         if ($row['type'] == 'صح/خطأ') {
             $type = 1;
@@ -51,13 +51,13 @@ class QuestionsImport implements ToModel, WithHeadingRow, SkipsOnError, WithVali
         }
         $option = getOption($type);
 
-        if (!empty($option)) {
+        if ($type == 1) {
             $question = new Question([
                 'title' => $row['title'],
                 'type' => $type,
-                'category' => $category,
-                'optionA' => $option[0],
-                'optionB' => $option[1],
+//                'category' => $category,
+                'optionA' => 'صح',
+                'optionB' => 'خطأ',
                 'optionC' => "",
                 'optionD' => "",
                 'right_answer' => $answer,
@@ -67,7 +67,7 @@ class QuestionsImport implements ToModel, WithHeadingRow, SkipsOnError, WithVali
             $question = new Question([
                 'title' => $row['title'],
                 'type' => $type,
-                'category' => $category,
+//                'category' => $category,
                 'optionA' => $row['a'],
                 'optionB' => $row['b'],
                 'optionC' => $row['c'],
@@ -85,10 +85,10 @@ class QuestionsImport implements ToModel, WithHeadingRow, SkipsOnError, WithVali
         return [
             'title' => 'required',
             'type' => 'required',
-            'category' => 'required',
+//            'category' => 'required',
             'a' => 'required',
             'b' => 'required',
-            'answer' => 'required|in:A,B,C,D',
+            'answer' => 'required|in:A,a,B,b,C,c,D,d',
         ];
     }
 }
