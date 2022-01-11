@@ -86,6 +86,7 @@
 
                                     @endforeach
                                 @endif
+                                    <button type="reset">ازالة الاجابة</button>
                             </div>
                         </div>
                     </div>
@@ -180,6 +181,15 @@
 
         window.addEventListener('online', () => toastr.success('متصل في الانترنت'));
         window.addEventListener('offline', () => toastr.error('فقد الاتصال بالانترنت'));
+    </script>
+
+    <script>
+        function uncheckRadioBtn(){
+            document.getElementById('customRadio1').checked = false
+            document.getElementById('customRadio2').checked = false
+            document.getElementById('customRadio3').checked = false
+            document.getElementById('customRadio4').checked = false
+        }
     </script>
 
 

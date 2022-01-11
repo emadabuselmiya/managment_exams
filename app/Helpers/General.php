@@ -1,8 +1,8 @@
 <?php
 
-
 use App\Models\EmployeeModels\Mark;
 use App\Models\EmployeeModels\Semester;
+use App\Models\Question;
 use App\Models\StudentQuestionExam;
 use Illuminate\Support\Facades\Auth;
 
@@ -67,15 +67,13 @@ function checkStartExam($exam)
     $now = Carbon\Carbon::now();
 
     $result = $exam->examResult->where('student_id', $student_id)->first();
-//    dd($result);
-//    dd($result->isEmpty());
-    if ($result == null) {
-        if ($now->format('Y-m-d') == $date || $now->format('h:i:s') >= $startTime && $now->format('h:i:s') <= $endTime) {
+
+    if ($now->format('Y-m-d') == $date && $now->format('h:i:s') >= $startTime && $now->format('h:i:s') <= $endTime) {
+        if ($result == null) {
             return true;
         }
     }
     return false;
-
 }
 
 function randomOption($optionA, $optionB, $optionC, $optionD)
@@ -181,6 +179,15 @@ function studentPassFinalExam($exam)
             return true;
         }
     }
+}
+
+function examHasQuestions($exam)
+{
+    $questions = Question::where('exam_id', $exam->id)->get();
+    if($questions){
+        return false;
+    }
+    return true;
 }
 
 

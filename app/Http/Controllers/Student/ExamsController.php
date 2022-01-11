@@ -22,18 +22,26 @@ class ExamsController extends Controller
     public function showAllExams($id)
     {
         $course = Course::findOrFail($id);
+        $currentExam = [];
         if (isCourseRegisterForStudent($id)) {
-            $datetimeNow = Carbon::now()->addWeek(1)->format('Y-m-d');
-            $exam = Exam::with('course')
+            $now = Carbon::now();
+
+            $exams = Exam::with('course')
                 ->where('course_id', $id)
-                ->where('date', '<=', $datetimeNow)
+//                ->where('date', $now->format('Y-m-d'))
+//                ->where('start_time', '<=', $now->addMinute(5)->format('H:i:s'))
                 ->get();
-        } else {
-            $exam = [];
+
+            foreach ($exams as $exam){
+               if(checkStartExam($exam)){
+                   $currentExam[] = $exam;
+               }
+            }
         }
+//        dd($exam. "   ". $now);
         //$exam = Exam::with('course')->where('course_id', $id)->get();
         return view('student.exams.index', [
-            'exams' => $exam,
+            'exams' => $currentExam,
             'course_name' => $course->name_ar
         ]);
     }
@@ -101,33 +109,37 @@ class ExamsController extends Controller
     {
         $exam = Exam::findOrFail($exam_id);
         if (isCourseRegisterForStudent($exam->course->id)) {
-            if (checkStartExam($exam) || studentPassFinalExam($exam)) {
-                $student_id = Auth::guard('student')->user()->id;
-                $questions = StudentQuestionExam::with('question')
-                    ->when($exam_id, function ($query, $exam_id) {
-                        $query->where('exam_id', '=', $exam_id);
-                    })
-                    ->when($student_id, function ($query, $student_id) {
-                        $query->where('student_id', '=', $student_id);
-                    })->get();
+            if(examHasQuestions($exam)) {
+                if (checkStartExam($exam) || studentPassFinalExam($exam)) {
+                    $student_id = Auth::guard('student')->user()->id;
+                    $questions = StudentQuestionExam::with('question')
+                        ->when($exam_id, function ($query, $exam_id) {
+                            $query->where('exam_id', '=', $exam_id);
+                        })
+                        ->when($student_id, function ($query, $student_id) {
+                            $query->where('student_id', '=', $student_id);
+                        })->get();
 
-                foreach ($questions as $item) {
-                    if ($item->answer == null) {
+                    foreach ($questions as $item) {
+                        if ($item->answer == null) {
 
 //                    $item->update(['ipAddress' => Request::ip()]);
 
-                        return view('student.exams.question', [
-                            'exam_question' => $item,
-                            'exam' => $exam,
-                        ]);
+                            return view('student.exams.question', [
+                                'exam_question' => $item,
+                                'exam' => $exam,
+                            ]);
+                        }
                     }
-                }
 
-                return view('student.exams.end_exam', [
-                    'questions' => $questions,
-                    'exam' => $exam,
-                ]);
-            } else {
+                    return view('student.exams.end_exam', [
+                        'questions' => $questions,
+                        'exam' => $exam,
+                    ]);
+                } else {
+                    return redirect()->route('student.exams.details', $exam_id);
+                }
+            }else{
                 return redirect()->route('student.exams.details', $exam_id);
             }
         } else {
