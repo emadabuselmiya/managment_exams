@@ -69,7 +69,6 @@
 <br>
 <div class="container-fluid">
 
-    {{-- {{dd(checkStartExam($exam))}}--}}
     <div class="row" style="margin-top: 24px;text-align: center;">
         <div class="col-12">
 {{--            {{dd(studentPassFinalExam($exam) || !checkStartExam($exam))}}--}}
@@ -159,7 +158,6 @@
                                     <td colspan="11" class="text-center">لا يوجد محاولات</td>
                                 </tr>
                                 @endif
-
 
                             </tbody>
                         </table>

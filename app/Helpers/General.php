@@ -184,10 +184,10 @@ function studentPassFinalExam($exam)
 function examHasQuestions($exam)
 {
     $questions = Question::where('exam_id', $exam->id)->get();
-    if($questions){
-        return false;
+    if(!empty($questions[0])){
+        return true;
     }
-    return true;
+    return false;
 }
 
 

@@ -122,9 +122,7 @@ class ExamsController extends Controller
 
                     foreach ($questions as $item) {
                         if ($item->answer == null) {
-
 //                    $item->update(['ipAddress' => Request::ip()]);
-
                             return view('student.exams.question', [
                                 'exam_question' => $item,
                                 'exam' => $exam,
@@ -140,6 +138,8 @@ class ExamsController extends Controller
                     return redirect()->route('student.exams.details', $exam_id);
                 }
             }else{
+                toastr()->error('لا يوجد اسئلة لهذا الامتحان');
+
                 return redirect()->route('student.exams.details', $exam_id);
             }
         } else {

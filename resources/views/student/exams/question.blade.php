@@ -86,7 +86,7 @@
 
                                     @endforeach
                                 @endif
-                                    <button type="reset">ازالة الاجابة</button>
+                                <button type="reset">ازالة الاجابة</button>
                             </div>
                         </div>
                     </div>
@@ -105,8 +105,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fas fa-arrow-circle-left"></i>&nbsp;Next
                                 </button>
-                            </a>
-                        </div>
+                            div>
 
                         <!-- /.card-body -->
                     </div>
@@ -149,11 +148,14 @@
     <script>
         // Set the date we're counting down to
         var countDownDate = new Date("{{getEndTime($exam->id)}}").getTime();
-        console.log(countDownDate)
+        var now = new Date("{{Carbon\Carbon::now()}}").getTime();
+        console.log(now);
+
+
         // Update the count down every 1 second
         var x = setInterval(function () {
             // Get today's date and time
-            var now = new Date().getTime();
+            now = now + 1000;
             console.log(now);
             // Find the distance between now and the count down date
             var distance = countDownDate - now;
@@ -175,22 +177,12 @@
     </script>
 
     <script>
-        document.addEventListener("contextmenu", function(evt){
+        document.addEventListener("contextmenu", function (evt) {
             evt.preventDefault();
         }, false);
 
         window.addEventListener('online', () => toastr.success('متصل في الانترنت'));
         window.addEventListener('offline', () => toastr.error('فقد الاتصال بالانترنت'));
     </script>
-
-    <script>
-        function uncheckRadioBtn(){
-            document.getElementById('customRadio1').checked = false
-            document.getElementById('customRadio2').checked = false
-            document.getElementById('customRadio3').checked = false
-            document.getElementById('customRadio4').checked = false
-        }
-    </script>
-
 
 @endsection
