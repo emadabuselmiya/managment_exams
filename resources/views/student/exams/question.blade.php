@@ -86,7 +86,11 @@
 
                                     @endforeach
                                 @endif
-                                <button type="reset">ازالة الاجابة</button>
+                                <div class="col-sm-12">
+                                    <button type="reset" class="btn btn-danger"
+                                            style="margin-top: 10px">ازالة الاجابة
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -105,33 +109,33 @@
                                 <button type="submit" class="btn btn-primary">
                                     <i class="fas fa-arrow-circle-left"></i>&nbsp;Next
                                 </button>
-                            div>
+                            </a>
 
-                        <!-- /.card-body -->
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <div class="col-lg-12 col-sm-12">
-                    <!-- general form elements -->
-                    <div class="card card-primary">
-                        <div class="card-header">
-                            <h3 class="card-title">Questions Navigation</h3>
+                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
-                            @foreach(numberQuestions($exam_question->exam_id) as $item)
-                                <a class="btn btn-sm @if($item->answer === "z") btn-danger @elseif($item->id == $exam_question->id) btn-info @elseif($item->answer != null)  btn-success @else btn-warning @endif"
-                                   href="#">
-                                    {{$loop->iteration}}
-                                </a>
-                            @endforeach
-                        </div>
-                        <!-- /.card-body -->
+                        <!-- /.card -->
                     </div>
-                    <!-- /.card -->
-                </div>
+                    <div class="col-lg-12 col-sm-12">
+                        <!-- general form elements -->
+                        <div class="card card-primary">
+                            <div class="card-header">
+                                <h3 class="card-title">Questions Navigation</h3>
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+                                @foreach(numberQuestions($exam_question->exam_id) as $item)
+                                    <a class="btn btn-sm @if($item->answer === "z") btn-danger @elseif($item->id == $exam_question->id) btn-info @elseif($item->answer != null)  btn-success @else btn-warning @endif"
+                                       href="#">
+                                        {{$loop->iteration}}
+                                    </a>
+                                @endforeach
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
 
-            </div>
+                </div>
         </form>
         <!-- /.card-body -->
     </div>
