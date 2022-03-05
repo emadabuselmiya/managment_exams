@@ -124,7 +124,7 @@
                             <!-- /.card-header -->
                             <div class="card-body">
                                 @foreach(numberQuestions($exam_question->exam_id) as $item)
-                                    <a class="btn btn-sm @if($item->answer === "z") btn-danger @elseif($item->id == $exam_question->id) btn-info @elseif($item->answer != null)  btn-success @else btn-warning @endif"
+                                    <a class="btn btn-sm m-1 @if($item->answer === "z") btn-danger @elseif($item->id == $exam_question->id) btn-info @elseif($item->answer != null)  btn-success @else btn-warning @endif"
                                        href="#">
                                         {{$loop->iteration}}
                                     </a>

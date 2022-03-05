@@ -46,7 +46,7 @@ class QuestionsImport implements ToModel, WithHeadingRow, SkipsOnError, WithVali
 
         if ($row['type'] == 'صح/خطأ') {
             $type = 1;
-        } else if ($row['type'] == 'أختر') {
+        } else if ($row['type'] == 'اختر') {
             $type = 2;
         }
         $option = getOption($type);
@@ -63,7 +63,7 @@ class QuestionsImport implements ToModel, WithHeadingRow, SkipsOnError, WithVali
                 'right_answer' => $answer,
                 'exam_id' => $this->exam_id,
             ]);
-        }else{
+        }elseif($type == 2){
             $question = new Question([
                 'title' => $row['title'],
                 'type' => $type,

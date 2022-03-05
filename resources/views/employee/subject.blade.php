@@ -37,6 +37,8 @@
                                 <th id="widthcol">#</th>
                                 <th>رقم المادة</th>
                                 <th>أسم المادة</th>
+                                <th>الفصل - العام الدراسي</th>
+
                                 <th  id="widthcol" class="sort-no-content">العمليات</th>
                             </tr>
                             </thead>
@@ -46,6 +48,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->availablecourse->course->course_code}}</td>
                                     <td>{{$item->availablecourse->course->name_ar}}</td>
+                                    <td > الفصل {{$item->availablecourse->semester->semester_period}} - {{$item->availablecourse->semester->year}}</td>
                                     <td id="centeritem">
                                         <a class="btn btn-info btn-sm"
                                            href="{{route('employee.exams.index', $item->availablecourse->course_id)}}">
@@ -59,7 +62,9 @@
                             <tr>
                                 <th id="widthcol">#</th>
                                 <th>رقم المادة</th>
-                                <th>أسم العمليات</th>
+                                <th>أسم المادة</th>
+                                <th>الفصل - العام الدراسي</th>
+
                                 <th id="widthcol">العمليات</th>
                             </tr>
                             </tfoot>

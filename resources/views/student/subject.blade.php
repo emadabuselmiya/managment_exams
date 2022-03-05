@@ -45,7 +45,7 @@
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->course->course_code}}</td>
-                                    <td>{{$item->course->name_ar}}</td>
+                                    <td>{{$item->course->name_ar}}@if($item->study_status == 'I') (غير مكتمل) @endif </td>
                                     <td>
                                         <div class="row">
                                             <a class="btn btn-info btn-sm"

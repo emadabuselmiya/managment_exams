@@ -33,14 +33,33 @@ class HomeController extends Controller
 
     public function subject()
     {
+        $courses = [];
+
         $student_id = Auth::guard('student')->user()->id;
         $current_semester = Semester::where('active', 1)->select('id')->first();
-        $mark = Mark::where('student_id', $student_id)
-            ->where('semester_id', $current_semester->id)
-            ->where('study_status', '<>', 'W')
+        $marks = Mark::where('student_id', $student_id)
+//            ->where('semester_id', $current_semester->id)
+//            ->where('study_status', '<>', 'W')
             ->get();
+
+//        $incomplete_marks = Mark::where('student_id', $student_id)
+//            ->where('study_status', 'I')
+//            ->get();
+
+        foreach ($marks as $mark) {
+            if ($mark->study_status == 'I') {
+                $courses [] = $mark;
+            }
+
+            if ($mark->semester_id == $current_semester->id){
+                if ($mark->study_status != 'W') {
+                    $courses [] = $mark;
+                }
+            }
+        }
+
         return view('student.subject', [
-            'courses' => $mark,
+            'courses' => $courses,
         ]);
     }
 
