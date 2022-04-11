@@ -35,14 +35,13 @@
                     <h3 class="card-title">Instructions "التعليمات"</h3>
                 </div>
                 <div class="card-body">
-                    1.The body of the card <br>
-                    2.The body of the card <br>
-                    3.The body of the card <br>
-                    4.The body of the card <br>
+                    1. يمنع دخول الامتحان من جهازين <br>
+                    2. يمنع تقديم الامتحان الا من قاعات مختبرات الكلية <br>
+
                 </div>
-                <div class="card-footer">
-                    Read it well
-                </div>
+{{--                <div class="card-footer">--}}
+{{--                    Read it well--}}
+{{--                </div>--}}
             </div>
         </div>
 
@@ -59,9 +58,9 @@
                     5. مدة الامتحان: {{calTime($exam)}} <br>
 
                 </div>
-                <div class="card-footer">
-                    Read it well
-                </div>
+{{--                <div class="card-footer">--}}
+{{--                    Read it well--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>

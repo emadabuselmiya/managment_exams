@@ -32,10 +32,10 @@ class ExamsController extends Controller
 //                ->where('start_time', '<=', $now->addMinute(5)->format('H:i:s'))
                 ->get();
 
-            foreach ($exams as $exam){
-               if(checkStartExam($exam)){
-                   $currentExam[] = $exam;
-               }
+            foreach ($exams as $exam) {
+                if (checkStartExam($exam)) {
+                    $currentExam[] = $exam;
+                }
             }
         }
 //        dd($exam. "   ". $now);
@@ -109,7 +109,7 @@ class ExamsController extends Controller
     {
         $exam = Exam::findOrFail($exam_id);
         if (isCourseRegisterForStudent($exam->course->id)) {
-            if(examHasQuestions($exam)) {
+            if (examHasQuestions($exam)) {
                 if (checkStartExam($exam) || studentPassFinalExam($exam)) {
                     $student_id = Auth::guard('student')->user()->id;
                     $questions = StudentQuestionExam::with('question')
@@ -137,7 +137,7 @@ class ExamsController extends Controller
                 } else {
                     return redirect()->route('student.exams.details', $exam_id);
                 }
-            }else{
+            } else {
                 toastr()->error('لا يوجد اسئلة لهذا الامتحان');
 
                 return redirect()->route('student.exams.details', $exam_id);
@@ -209,11 +209,15 @@ class ExamsController extends Controller
         ]);
 
         $course_id = $exam->course->id;
-        $mark = Mark::when($student_id, function ($query, $student_id) {
-            $query->where('student_id', '=', $student_id);
-        })->when($course_id, function ($query, $course_id) {
-            $query->where('course_id', '=', $course_id);
-        })->first();
+        $semester_id = Semester::where('active', 1)->select('id')->first()->id;
+
+        $mark = Mark::where('semester_id', $semester_id)
+            ->when($student_id, function ($query, $student_id) {
+                $query->where('student_id', '=', $student_id);
+            })
+            ->when($course_id, function ($query, $course_id) {
+                $query->where('course_id', '=', $course_id);
+            })->first();
 
         if ($exam->type == "mid") {
             if ($mark->mid_mark == null) {
