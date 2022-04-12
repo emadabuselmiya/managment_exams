@@ -200,7 +200,7 @@ class ExamsController extends Controller
             }
         }
 
-        $last_mark = ($exam_mark / $number_questions) * $student_mark; //
+        $last_mark = ($exam_mark / $number_questions) * $student_mark;
 
         ExamResult::create([
             'student_id' => $student_id,
