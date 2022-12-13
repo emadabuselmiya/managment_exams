@@ -55,13 +55,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($exam->course->mark as $item)
+                            @foreach($exam->examResult as $item)
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->student->id}}</td>
                                     <td>{{$item->student->getFullname()}}</td>
 
-                                    <td>{{getMarkStudent($item, $exam)}}</td>
+                                    <td>{{$item->result_exam .'/'. $item->exam->weight}}</td>
                                     <td>
                                         <div class="row">
 
